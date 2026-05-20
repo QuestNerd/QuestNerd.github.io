@@ -5,7 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QuestNerd — Print · Build · Play</title>
   <meta name="description" content="QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta property="og:title" content="QuestNerd — Print · Build · Play">
+  <meta property="og:description" content="QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QuestNerd",
+    "url": "https://questnerd.github.io/",
+    "description": "QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all."
+  }
+  </script>  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
   <script src="assets/js/config.js" defer></script>
   <script src="assets/js/products.js" defer></script>
@@ -25,7 +36,7 @@
           <p class="hero-lede">QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all — built by one engineer who actually ships.</p>
           <div class="hero-cta-row">
             <a class="qn-button" href="shop.html">Shop 3D Prints &amp; Models</a>
-            <a class="qn-button ghost" href="apps.html">See the apps</a>
+            <a class="qn-button ghost" href="portfolio.html">See the portfolio</a>
           </div>
           <div class="trust-row">
             <span class="badge">Secure checkout</span>
@@ -57,6 +68,40 @@
       </div>
       <div data-qn-grid data-qn-type="googleplay" data-qn-limit="3"
            data-qn-empty="Add Google Play entries in assets/js/products.js."></div>
+    </section>
+
+    <section class="section" id="model-viewer-demo">
+      <div class="section-head">
+        <h2>Spin it before you buy it</h2>
+        <p class="meta">Every model listing can support an interactive 3D preview.</p>
+      </div>
+      <div class="card">
+        <p>Embed any <code>.glb</code> / <code>.gltf</code> file into a product page by dropping a <code>&lt;model-viewer&gt;</code> element into the HTML — visitors can rotate, zoom, and inspect the model in their browser, on mobile or desktop, with no plugins.</p>
+        <p><code>&lt;model-viewer src="model.glb" alt="Model name" camera-controls auto-rotate&gt;&lt;/model-viewer&gt;</code></p>
+        <div class="model-viewer-wrap" role="img" aria-label="3D viewer placeholder" style="display:flex;align-items:center;justify-content:center;">
+          <img src="assets/img/questnerd-mark.svg" alt="" width="200" height="200" style="opacity:.7">
+        </div>
+        <p class="meta">Tip: include the <a href="https://modelviewer.dev/" target="_blank" rel="noopener noreferrer"><code>&lt;model-viewer&gt;</code></a> Web Component on the page and point <code>src</code> at any hosted <code>.glb</code> file.</p>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="section-head">
+        <h2>Portfolio &amp; Case Studies</h2>
+        <p class="meta"><a href="portfolio.html">Read every project →</a></p>
+      </div>
+      <div class="portfolio-list">
+        <article>
+          <h3><a href="portfolio.html">Designing a print-on-demand pipeline</a></h3>
+          <p class="meta">May 2026</p>
+          <p>How I scaled a single-printer hobby into a multi-machine queue with automated slicing and inventory.</p>
+        </article>
+        <article>
+          <h3><a href="portfolio.html">Shipping a Godot game in 90 days</a></h3>
+          <p class="meta">Apr 2026</p>
+          <p>Scope, tooling, and the brutal cut list that made Quest Runner ship on time.</p>
+        </article>
+      </div>
     </section>
 
     <section class="section" id="downloads-cta">

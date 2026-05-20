@@ -348,7 +348,7 @@ model-viewer { width: 100%; height: 360px; }
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
 }
 .footer-grid h3 { color: var(--qn-text); font-size: 1rem; margin-bottom: 0.6rem; }

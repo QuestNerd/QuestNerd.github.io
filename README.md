@@ -18,11 +18,15 @@ no PHP, no build step, no server runtime required.
 ├── models.html            # 3D models (Cults3D + Etsy)
 ├── apps.html              # Android apps (Google Play)
 ├── downloads.html         # PC software/tools (free + Stripe paid)
+├── portfolio.html         # Portfolio & case studies
 ├── about.html             # Creator info
 ├── contact.html           # Email + social/store links
 ├── success.html           # Stripe success page
 ├── cancel.html            # Stripe cancel page
 ├── 404.html               # Themed not-found page
+├── privacy-policy.html    # Privacy policy
+├── terms.html             # Terms of service
+├── shipping-returns.html  # Shipping & returns
 ├── partials/
 │   ├── header.html        # Shared header (loaded by every page via fetch)
 │   └── footer.html        # Shared footer
