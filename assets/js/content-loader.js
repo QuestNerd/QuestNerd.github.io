@@ -1,24 +1,27 @@
 /*
  * QuestNerd — content loader.
  *
- * On every page, after `assets/js/products.js` and `assets/js/projects.js`
- * have populated `window.QN_PRODUCTS` and `window.QN_PROJECTS`, this loader
- * tries to fetch additional entries that Decap CMS wrote into:
+ * Discovers content authored via the /admin/ (Decap CMS) browser UI and
+ * merges it into window.QN_PRODUCTS / window.QN_PROJECTS so it appears
+ * on the site within seconds of being published.
  *
- *   /content/products/index.json   (array of product objects, OR an array
- *                                   of filenames to fetch individually)
- *   /content/projects/index.json   (same, for portfolio entries)
+ * Discovery happens in two passes:
  *
- * Either index file is OPTIONAL. If missing, the legacy hard-coded arrays
- * still drive the site. If present, its entries are merged in (CMS entries
- * win on id collision).
+ *   1. Try a hand-maintained `content/<collection>/index.json`. Two shapes
+ *      are supported:
+ *        a) [ { id, type, title, ... }, ... ]  — full inline records
+ *        b) [ "slug-a.json", "slug-b.json" ]  — list of filenames to fetch
  *
- * Why an index file? GitHub Pages can't list a directory over HTTP. Decap
- * CMS is configured (admin/config.yml) to rewrite this index file whenever
- * a new product / project is added or removed.
+ *   2. If no index file exists, fall back to the public GitHub Contents API
+ *      to list the directory, then fetch each `.json` file. The repo coords
+ *      are read from QN_CONFIG.CONTENT_REPO (defaults to
+ *      "QuestNerd/QuestNerd.github.io") and QN_CONFIG.CONTENT_BRANCH
+ *      (default "main"). The API call is rate-limited to 60/hr/IP
+ *      unauthenticated, but results are cached in sessionStorage so each
+ *      visitor only hits it once per browsing session.
  *
- * Once the merge is done we dispatch a `qn:content-rendered` event so other
- * scripts (main.js grid renderer, detail.js, search.js) can re-render.
+ * Once the merge is done, a `qn:content-loaded` event is dispatched so
+ * main.js / detail.js / search.js can re-render.
  */
 (function () {
   function fetchJson(url) {
@@ -34,18 +37,51 @@
     return Object.keys(byId).map(function (k) { return byId[k]; });
   }
 
-  function loadCollection(dir) {
+  function fromIndex(dir) {
     return fetchJson(dir + '/index.json').then(function (data) {
-      if (!data) return [];
-      // Two supported shapes:
-      //  1) [ { id, type, title, ... }, ... ]   — full inline
-      //  2) [ "slug-a.json", "slug-b.json" ]   — list of filenames to fetch
-      if (!Array.isArray(data)) return [];
-      if (data.length === 0) return [];
+      if (!Array.isArray(data) || data.length === 0) return null;
       if (typeof data[0] === 'object') return data;
-      return Promise.all(data.map(function (name) {
-        return fetchJson(dir + '/' + name);
-      })).then(function (arr) { return arr.filter(Boolean); });
+      return Promise.all(data.map(function (name) { return fetchJson(dir + '/' + name); }))
+        .then(function (arr) { return arr.filter(Boolean); });
+    });
+  }
+
+  function fromGithubApi(dir) {
+    var cfg = window.QN_CONFIG || {};
+    var repo = (cfg.CONTENT_REPO || 'QuestNerd/QuestNerd.github.io').trim();
+    var branch = (cfg.CONTENT_BRANCH || 'main').trim();
+    var cacheKey = 'qn_content:' + repo + ':' + branch + ':' + dir;
+    var cached = null;
+    try { cached = sessionStorage.getItem(cacheKey); } catch (e) {}
+    if (cached) {
+      try { return Promise.resolve(JSON.parse(cached)); } catch (e) {}
+    }
+    var api = 'https://api.github.com/repos/' + repo + '/contents/' + dir + '?ref=' + encodeURIComponent(branch);
+    return fetch(api, { headers: { 'Accept': 'application/vnd.github.v3+json' }, credentials: 'omit' })
+      .then(function (r) { if (!r.ok) throw new Error('GitHub API ' + r.status); return r.json(); })
+      .then(function (entries) {
+        if (!Array.isArray(entries)) return [];
+        var jsons = entries.filter(function (e) {
+          return e && e.type === 'file' && /\.json$/i.test(e.name) && e.name !== 'index.json';
+        });
+        return Promise.all(jsons.map(function (e) {
+          // Prefer the repo-relative path so we hit the same CDN as the site,
+          // and so this works on GitHub Pages preview branches.
+          return fetchJson(dir + '/' + e.name);
+        }));
+      })
+      .then(function (items) {
+        var clean = (items || []).filter(Boolean);
+        try { sessionStorage.setItem(cacheKey, JSON.stringify(clean)); } catch (e) {}
+        return clean;
+      })
+      .catch(function () { return []; });
+  }
+
+  function loadCollection(dir) {
+    return fromIndex(dir).then(function (idx) {
+      if (idx && idx.length) return idx;
+      return fromGithubApi(dir);
     });
   }
 

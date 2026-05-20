@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  QuestNerd sitemap.
+  When you add a product or project via /admin/, also add its URL here, or
+  regenerate this file with a small script. The dynamic detail pages
+  (product.html?id=… / project.html?id=…) are included with one entry per
+  known id; ad-hoc landing pages are listed too.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.questnerd.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.questnerd.com/shop.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.questnerd.com/models.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.questnerd.com/apps.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.questnerd.com/downloads.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.questnerd.com/portfolio.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.questnerd.com/about.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.questnerd.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Product detail pages (one per id in assets/js/products.js) -->
+  <url><loc>https://www.questnerd.com/product.html?id=dragon-mini</loc><priority>0.7</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=mech-keychain</loc><priority>0.7</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=desk-organizer</loc><priority>0.7</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=planter-pot</loc><priority>0.7</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=quest-runner</loc><priority>0.7</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=printpal</loc><priority>0.7</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=nerdnotes</loc><priority>0.7</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=slicer-presets</loc><priority>0.6</priority></url>
+  <url><loc>https://www.questnerd.com/product.html?id=pro-tool</loc><priority>0.9</priority></url>
+
+  <!-- Project / case study pages -->
+  <url><loc>https://www.questnerd.com/project.html?id=print-on-demand-pipeline</loc><priority>0.6</priority></url>
+  <url><loc>https://www.questnerd.com/project.html?id=godot-90-day-ship</loc><priority>0.6</priority></url>
+  <url><loc>https://www.questnerd.com/project.html?id=wp-to-static</loc><priority>0.5</priority></url>
+  <url><loc>https://www.questnerd.com/project.html?id=maker-brand-in-public</loc><priority>0.5</priority></url>
+
+  <!-- Landing pages (ad-traffic tunnel). Don't index template files. -->
+  <url><loc>https://www.questnerd.com/landing/print-pipeline.html</loc><priority>0.4</priority></url>
+
+  <!-- Legal -->
+  <url><loc>https://www.questnerd.com/privacy-policy.html</loc><priority>0.3</priority></url>
+  <url><loc>https://www.questnerd.com/terms.html</loc><priority>0.3</priority></url>
+  <url><loc>https://www.questnerd.com/shipping-returns.html</loc><priority>0.3</priority></url>
+</urlset>

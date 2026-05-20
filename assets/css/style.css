@@ -563,3 +563,35 @@ body.qn-search-open { overflow: hidden; }
 @media (max-width: 820px) {
   .product-detail-grid { grid-template-columns: 1fr; }
 }
+
+/* ------- Accessibility: focus rings for keyboard nav ------- */
+a:focus-visible,
+button:focus-visible,
+.qn-button:focus-visible,
+.qn-search-trigger:focus-visible,
+.menu-toggle:focus-visible,
+[data-qn-buy]:focus-visible,
+.product-card-actions .qn-button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--qn-accent);
+  outline-offset: 2px;
+}
+.product-card:focus-within {
+  border-color: var(--qn-accent);
+  box-shadow: 0 0 0 2px var(--qn-accent-soft);
+}
+/* Don't lose focus when interactive grids re-render. */
+.product-thumb-link:focus-visible {
+  outline: 2px solid var(--qn-accent);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Respect users' reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  model-viewer { --animation-duration: 0; }
+}

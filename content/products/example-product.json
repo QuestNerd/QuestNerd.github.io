@@ -1,0 +1,19 @@
+{
+  "id": "example-product",
+  "type": "stripe",
+  "title": "Example Product (delete me)",
+  "description": "This file demonstrates how Decap CMS writes a product into content/products/. Delete it or replace it via the /admin/ UI.",
+  "longDescription": "Each entry is one JSON file in this directory. Adding a new product via /admin/ creates a new file here automatically — you don't need to touch products.js any more. The legacy products.js entries still load too, so nothing breaks during the transition.",
+  "story": "When Decap saves an entry it commits to this repo over the GitHub API. GitHub Pages then rebuilds; visitors fetch the new file directly on next page-load via content-loader.js.",
+  "price": "$0.00",
+  "featured": false,
+  "image": "assets/img/questnerd-mark.svg",
+  "specs": [
+    { "label": "Format", "value": "JSON" },
+    { "label": "Written by", "value": "Decap CMS" }
+  ],
+  "faq": [
+    { "q": "Can I delete this?", "a": "Yes — either through /admin/ or by removing the file from the repo." }
+  ],
+  "tags": ["example", "delete-me"]
+}

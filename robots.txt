@@ -1,0 +1,11 @@
+# QuestNerd — robots.txt
+User-agent: *
+Allow: /
+# Don't index the Stripe success/cancel pages or the landing-page template.
+Disallow: /success.html
+Disallow: /cancel.html
+Disallow: /landing/_template.html
+# Decap CMS admin should not be crawled.
+Disallow: /admin/
+
+Sitemap: https://www.questnerd.com/sitemap.xml
