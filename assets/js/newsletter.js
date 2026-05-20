@@ -64,10 +64,12 @@
     var action = (cfg.NEWSLETTER_ACTION || '').trim();
     var provider = (cfg.NEWSLETTER_PROVIDER || '').toLowerCase();
     if (!provider && action) {
-      if (action.indexOf('formspree.io') !== -1) provider = 'formspree';
-      else if (action.indexOf('buttondown.email') !== -1) provider = 'buttondown';
-      else if (action.indexOf('list-manage.com') !== -1) provider = 'mailchimp';
-      else if (action.indexOf('convertkit.com') !== -1) provider = 'convertkit';
+      var host = '';
+      try { host = new URL(action).hostname.toLowerCase(); } catch (e) { host = ''; }
+      if (host === 'formspree.io' || host.endsWith('.formspree.io')) provider = 'formspree';
+      else if (host === 'buttondown.email' || host.endsWith('.buttondown.email')) provider = 'buttondown';
+      else if (host === 'list-manage.com' || host.endsWith('.list-manage.com')) provider = 'mailchimp';
+      else if (host === 'convertkit.com' || host.endsWith('.convertkit.com')) provider = 'convertkit';
     }
 
     forms.forEach(function (form) {
@@ -84,7 +86,7 @@
         }
         setMessage(form, 'Subscribing…', '');
         var p;
-        if (provider === 'mailchimp') { openMailchimp(action, email); setMessage(form, 'Opening signup form…', 'success'); return; }
+        if (provider === 'mailchimp') { openMailchimp(action, email); setMessage(form, 'Opening Mailchimp signup in a new window — finish there to subscribe.', 'success'); return; }
         if (provider === 'convertkit') p = submitConvertKit(form, action, email);
         else if (provider === 'buttondown') p = submitButtondown(form, action, email);
         else p = submitFormspree(form, action, email);

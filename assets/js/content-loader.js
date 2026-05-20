@@ -50,6 +50,14 @@
     var cfg = window.QN_CONFIG || {};
     var repo = (cfg.CONTENT_REPO || 'QuestNerd/QuestNerd.github.io').trim();
     var branch = (cfg.CONTENT_BRANCH || 'main').trim();
+    // Validate `owner/repo` strictly. GitHub usernames allow alphanumerics +
+    // hyphens; repository names additionally allow dots and underscores. We
+    // also explicitly reject any segment that contains `..` so a tampered
+    // config.js can't construct a path-traversal payload.
+    if (!/^[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/.test(repo) || repo.indexOf('..') !== -1) return Promise.resolve([]);
+    // Branch names can contain slashes (e.g. "feature/foo") but must not
+    // start with a dot or contain `..` per git-check-ref-format(1).
+    if (!/^[A-Za-z0-9._\-\/]+$/.test(branch) || branch.indexOf('..') !== -1 || branch.charAt(0) === '.') return Promise.resolve([]);
     var cacheKey = 'qn_content:' + repo + ':' + branch + ':' + dir;
     var cached = null;
     try { cached = sessionStorage.getItem(cacheKey); } catch (e) {}

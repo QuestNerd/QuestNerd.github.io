@@ -10,6 +10,8 @@
 
 backend:
   name: github
+  # If you fork this repo, change the line below to your own
+  # "<owner>/<repo>" — otherwise Decap will keep committing to QuestNerd's repo.
   repo: QuestNerd/QuestNerd.github.io
   branch: main
   base_url: https://api.netlify.com

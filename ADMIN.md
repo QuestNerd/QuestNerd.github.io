@@ -67,6 +67,19 @@ backend:
   base_url: https://your-oauth-broker.example.com
 ```
 
+## Before you go live
+
+Two placeholder entries ship with the repo so you can verify the pipeline
+works end-to-end on first deploy:
+
+- `content/products/example-product.json` (titled "Example Product (delete me)")
+- `content/projects/example-project.json` (titled "Example Project (delete me)")
+
+**Delete both** before pointing real traffic at the site, either from the
+`/admin/` UI (open the entry → Delete) or by removing the files from the
+repo. Once removed they will vanish from the shop and portfolio on the next
+deploy.
+
 ## Adding a product
 
 1. Go to <https://www.questnerd.com/admin/> and log in.

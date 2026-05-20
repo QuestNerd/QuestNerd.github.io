@@ -19,7 +19,13 @@
 
     Authentication: see ADMIN.md. You must set up a GitHub OAuth broker
     (Netlify offers a free hosted one, or self-host) before login works.
+
+    SECURITY: Decap is loaded from a public CDN and pinned to an exact version
+    so the URL is reproducible. For maximum integrity protection, regenerate
+    the file's SHA-384 hash and add `integrity="sha384-…" crossorigin="anonymous"`
+    to the script tag (the unauthenticated build sandbox here can't reach the
+    CDN to compute it). See ADMIN.md for instructions.
   -->
-  <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@3.6.0/dist/decap-cms.js"></script>
 </body>
 </html>

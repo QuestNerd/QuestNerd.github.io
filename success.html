@@ -39,13 +39,29 @@
         var dl = document.getElementById('qn-order-download');
         if (prod && dl) {
           dl.hidden = false;
-          dl.querySelector('h2').textContent = prod.title;
+          // Use textContent (not innerHTML) so product titles cannot inject HTML.
+          dl.querySelector('h2').textContent = prod.title || '';
           if (prod.files && prod.files.length) {
             var ul = dl.querySelector('ul');
-            ul.innerHTML = prod.files.map(function (f) {
-              if (f.url) return '<li><a href="' + f.url + '">' + (f.name || f.url) + '</a></li>';
-              return '<li>' + (f.name || '') + (f.size ? ' <span class="meta">(' + f.size + ')</span>' : '') + '</li>';
-            }).join('');
+            ul.textContent = '';
+            prod.files.forEach(function (f) {
+              var li = document.createElement('li');
+              if (f.url) {
+                var a = document.createElement('a');
+                a.href = f.url;
+                a.textContent = f.name || f.url;
+                li.appendChild(a);
+              } else {
+                li.textContent = f.name || '';
+              }
+              if (f.size) {
+                var span = document.createElement('span');
+                span.className = 'meta';
+                span.textContent = ' (' + f.size + ')';
+                li.appendChild(span);
+              }
+              ul.appendChild(li);
+            });
           }
         }
       }

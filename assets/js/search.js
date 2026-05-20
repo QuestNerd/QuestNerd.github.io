@@ -85,7 +85,10 @@
     out.innerHTML = '<p class="meta">Searching…</p>';
     buildIndex().then(function (b) {
       try {
-        var hits = b.idx.search(query + '*').slice(0, 20);
+        // Only append a wildcard for queries 3+ chars long — short queries
+        // with `*` match too many docs and feel laggy.
+        var q = query.length >= 3 ? query + '*' : query;
+        var hits = b.idx.search(q).slice(0, 20);
         if (!hits.length) { out.innerHTML = '<p class="meta">No results for &ldquo;' + escapeHtml(query) + '&rdquo;.</p>'; return; }
         out.innerHTML = '<ul class="qn-search-hits">' + hits.map(function (h) {
           var d = b.docs[h.ref];
