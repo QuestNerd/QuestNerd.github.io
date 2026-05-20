@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuestNerd — Print · Build · Play</title>
+  <meta name="description" content="QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/stripe-checkout.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Build. Print. Play. <span class="accent">Ship</span>.</h1>
+          <p class="lede">QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all — built by one engineer who actually ships.</p>
+          <div class="cta-row">
+            <a class="qn-button" href="shop.html">Shop 3D Prints &amp; Models</a>
+            <a class="qn-button ghost" href="apps.html">See the apps</a>
+          </div>
+          <div class="trust-row">
+            <span class="badge">Secure checkout</span>
+            <span class="badge">Worldwide shipping</span>
+            <span class="badge">Interactive 3D previews</span>
+            <span class="badge">Built &amp; supported by the maker</span>
+          </div>
+        </div>
+        <aside class="hero-art" aria-hidden="true">
+          <img class="qn-logo" src="assets/img/questnerd-mark.svg" alt="" width="360" height="360">
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="section-head">
+        <h2>Featured 3D Prints &amp; Models</h2>
+        <p class="meta"><a href="shop.html">Browse the full shop →</a></p>
+      </div>
+      <!-- Featured products are rendered from assets/js/products.js (items with `featured: true`). -->
+      <div data-qn-grid data-qn-featured data-qn-limit="4"
+           data-qn-empty="Add featured products in assets/js/products.js (set `featured: true`)."></div>
+    </section>
+
+    <section class="section" id="apps-games">
+      <div class="section-head">
+        <h2>Apps &amp; Games</h2>
+        <p class="meta"><a href="apps.html">See all apps &amp; games →</a></p>
+      </div>
+      <div data-qn-grid data-qn-type="googleplay" data-qn-limit="3"
+           data-qn-empty="Add Google Play entries in assets/js/products.js."></div>
+    </section>
+
+    <section class="section" id="downloads-cta">
+      <div class="section-head">
+        <h2>PC Downloads</h2>
+        <p class="meta"><a href="downloads.html">All downloads →</a></p>
+      </div>
+      <div data-qn-grid data-qn-type="pc-download,stripe" data-qn-limit="3"
+           data-qn-empty="Add PC downloads in assets/js/products.js."></div>
+    </section>
+
+    <section class="section">
+      <div class="newsletter">
+        <div>
+          <h2>Get drops, devlogs, and discount codes</h2>
+          <p class="meta">Occasional emails. Early access to new prints and apps. Unsubscribe anytime.</p>
+        </div>
+        <form aria-label="Newsletter signup"
+              onsubmit="event.preventDefault(); this.querySelector('.qn-newsletter-msg').hidden = false;">
+          <label class="screen-reader-text" for="qn-newsletter-email">Email address</label>
+          <input id="qn-newsletter-email" type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit">Subscribe</button>
+          <p class="qn-newsletter-msg meta" hidden role="status">
+            Thanks! Newsletter integration is not wired up yet — connect Mailchimp/MailPoet/etc. to enable real signups.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>
