@@ -60,7 +60,7 @@
 
     return (
       '<article class="product-card" aria-label="' + title + '">' +
-        '<div class="product-thumb"><img src="' + img + '" alt=""></div>' +
+        '<div class="product-thumb"><img src="' + img + '" alt="' + title + '"></div>' +
         '<h3 class="product-title">' + title + '</h3>' +
         (desc ? '<p class="meta">' + desc + '</p>' : '') +
         (price ? '<p class="product-price">' + price + '</p>' : '') +
