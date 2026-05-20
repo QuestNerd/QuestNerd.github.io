@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>404 — Page not found — QuestNerd</title>
-  <meta name="description" content="That page wandered off the map.">
-  <meta name="robots" content="noindex">
-  <meta property="og:title" content="404 — Page not found — QuestNerd">
-  <meta property="og:description" content="That page wandered off the map.">
-  <meta property="og:type" content="website">
+  <title>Project — QuestNerd</title>
+  <meta name="description" content="Portfolio case study — QuestNerd projects, prints, and apps behind the shop.">
+  <meta property="og:title" content="Project — QuestNerd">
+  <meta property="og:description" content="Portfolio case study — QuestNerd projects, prints, and apps behind the shop.">
+  <meta property="og:type" content="article">
   <meta property="og:image" content="assets/img/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -22,22 +21,23 @@
   <script src="assets/js/partials.js" defer></script>
   <script src="assets/js/nav.js" defer></script>
   <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/detail.js" defer></script>
 </head>
 <body>
   <div data-include="header"></div>
 
   <main class="qn-wrap">
     <section class="section">
-      <article class="card entry-content" style="text-align:center;">
-        <h1>404 — Page not found</h1>
-        <p class="hero-lede">That page wandered off the map. The print probably failed at 80%.</p>
-        <p>Try one of these instead:</p>
-        <div class="hero-cta-row" style="justify-content:center;">
-          <a class="qn-button" href="index.html">Home</a>
-          <a class="qn-button ghost" href="shop.html">Shop</a>
-          <a class="qn-button ghost" href="contact.html">Contact</a>
-        </div>
-      </article>
+      <p class="meta"><a href="portfolio.html">← Back to portfolio</a></p>
+      <div data-qn-detail="project">
+        <p class="meta">Loading…</p>
+      </div>
+    </section>
+
+    <section class="section" id="related">
+      <div class="section-head"><h2>More case studies</h2></div>
+      <div data-qn-related></div>
     </section>
   </main>
 

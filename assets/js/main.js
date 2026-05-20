@@ -4,6 +4,14 @@
  * Renders product grids from window.QN_PRODUCTS into any container with
  * `data-qn-grid` (filters via `data-qn-type` / `data-qn-featured` /
  * `data-qn-limit`) and wires up Stripe "Buy" buttons.
+ *
+ * Also renders portfolio grids from window.QN_PROJECTS into any container
+ * with `data-qn-projects`.
+ *
+ * Re-renders on:
+ *   - DOMContentLoaded
+ *   - qn:partials-loaded   (header/footer just injected)
+ *   - qn:content-loaded    (Decap-authored content just merged in)
  */
 
 (function () {
@@ -43,6 +51,7 @@
     var price = escapeHtml(product.price || '');
     var img = escapeHtml(product.image || 'assets/img/questnerd-mark.svg');
     var typeLabel = STORE_LABELS[product.type] || 'View';
+    var detailHref = 'product.html?id=' + encodeURIComponent(product.id || '');
 
     var actionHtml;
     if (product.type === 'stripe') {
@@ -58,13 +67,41 @@
         escapeHtml(typeLabel) + '</a>';
     }
 
+    var badge = product.model ? '<span class="qn-badge-3d" title="Interactive 3D preview available">3D</span>' : '';
+
     return (
       '<article class="product-card" aria-label="' + title + '">' +
-        '<div class="product-thumb"><img src="' + img + '" alt="' + title + '"></div>' +
-        '<h3 class="product-title">' + title + '</h3>' +
+        '<a class="product-thumb-link" href="' + detailHref + '" aria-label="View details for ' + title + '">' +
+          '<div class="product-thumb">' + badge +
+            '<img src="' + img + '" alt="' + title + '">' +
+          '</div>' +
+        '</a>' +
+        '<h3 class="product-title"><a href="' + detailHref + '">' + title + '</a></h3>' +
         (desc ? '<p class="meta">' + desc + '</p>' : '') +
         (price ? '<p class="product-price">' + price + '</p>' : '') +
-        actionHtml +
+        '<div class="product-card-actions">' +
+          actionHtml +
+          '<a class="qn-button ghost" href="' + detailHref + '">Details</a>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function renderProjectCard(project) {
+    var title = escapeHtml(project.title || 'Untitled project');
+    var summary = escapeHtml(project.summary || '');
+    var date = escapeHtml(project.date || '');
+    var img = escapeHtml(project.image || 'assets/img/questnerd-mark.svg');
+    var href = 'project.html?id=' + encodeURIComponent(project.id || '');
+    return (
+      '<article class="product-card" aria-label="' + title + '">' +
+        '<a class="product-thumb-link" href="' + href + '">' +
+          '<div class="product-thumb"><img src="' + img + '" alt="' + title + '"></div>' +
+        '</a>' +
+        '<h3 class="product-title"><a href="' + href + '">' + title + '</a></h3>' +
+        (date ? '<p class="meta">' + date + '</p>' : '') +
+        (summary ? '<p class="meta">' + summary + '</p>' : '') +
+        '<a class="qn-button ghost" href="' + href + '">Read case study</a>' +
       '</article>'
     );
   }
@@ -84,13 +121,33 @@
       });
       if (!products.length) {
         var emptyMsg = grid.getAttribute('data-qn-empty') ||
-          'No items yet. Add entries to assets/js/products.js to populate this grid.';
+          'No items yet. Add entries to assets/js/products.js (or via /admin/) to populate this grid.';
         grid.innerHTML = renderEmpty(emptyMsg);
         grid.classList.remove('product-grid');
         continue;
       }
       grid.classList.add('product-grid');
       grid.innerHTML = products.map(renderCard).join('');
+    }
+
+    var projectGrids = document.querySelectorAll('[data-qn-projects]');
+    for (var k = 0; k < projectGrids.length; k++) {
+      var pg = projectGrids[k];
+      var limit = parseInt(pg.getAttribute('data-qn-limit') || '0', 10) || 0;
+      var projects = (window.QN_PROJECTS || []).slice();
+      // Sort by date descending.
+      projects.sort(function (a, b) {
+        return String(b.date || '').localeCompare(String(a.date || ''));
+      });
+      if (limit > 0) projects = projects.slice(0, limit);
+      if (!projects.length) {
+        pg.innerHTML = renderEmpty(pg.getAttribute('data-qn-empty') ||
+          'No projects yet. Add entries to assets/js/projects.js (or via /admin/) to populate this grid.');
+        pg.classList.remove('product-grid');
+        continue;
+      }
+      pg.classList.add('product-grid');
+      pg.innerHTML = projects.map(renderProjectCard).join('');
     }
   }
 
@@ -120,6 +177,7 @@
   function init() {
     renderGrids();
     wireBuyButtons();
+    document.dispatchEvent(new CustomEvent('qn:content-rendered'));
   }
 
   if (document.readyState === 'loading') {
@@ -129,4 +187,6 @@
   }
   // Re-run if header/footer get injected after our initial pass.
   document.addEventListener('qn:partials-loaded', init);
+  // Re-run if Decap-authored content was merged in after first render.
+  document.addEventListener('qn:content-loaded', init);
 })();
