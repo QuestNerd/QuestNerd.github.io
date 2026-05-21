@@ -96,15 +96,34 @@
   function init() {
     Promise.all([
       loadCollection('content/products'),
-      loadCollection('content/projects')
+      loadCollection('content/projects'),
+      loadCollection('content/filaments'),
+      fetchJson('content/settings/makerworld-print.json')
     ]).then(function (results) {
       var cmsProducts = results[0] || [];
       var cmsProjects = results[1] || [];
+      var cmsFilaments = results[2] || [];
+      var cmsMakerSettings = results[3] || null;
       if (cmsProducts.length) {
         window.QN_PRODUCTS = mergeById(window.QN_PRODUCTS || [], cmsProducts);
       }
       if (cmsProjects.length) {
         window.QN_PROJECTS = mergeById(window.QN_PROJECTS || [], cmsProjects);
+      }
+      if (cmsFilaments.length || cmsMakerSettings) {
+        var overrides = window.QN_MAKERWORLD_OVERRIDES || {};
+        if (cmsFilaments.length) {
+          overrides.filaments = mergeById(overrides.filaments || [], cmsFilaments);
+        }
+        if (cmsMakerSettings && typeof cmsMakerSettings === 'object') {
+          if (Array.isArray(cmsMakerSettings.tiers) && cmsMakerSettings.tiers.length) {
+            overrides.tiers = cmsMakerSettings.tiers;
+          }
+          if (typeof cmsMakerSettings.intro === 'string' && cmsMakerSettings.intro.length) {
+            overrides.intro = cmsMakerSettings.intro;
+          }
+        }
+        window.QN_MAKERWORLD_OVERRIDES = overrides;
       }
       document.dispatchEvent(new CustomEvent('qn:content-loaded'));
     });

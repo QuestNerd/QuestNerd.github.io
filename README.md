@@ -17,6 +17,7 @@ see [`ADMIN.md`](ADMIN.md)).
 ├── models.html            # 3D models (Cults3D + Etsy)
 ├── apps.html              # Android apps (Google Play)
 ├── downloads.html         # PC software/tools (free + Stripe paid)
+├── makerworld-prints.html # MakerWorld print-and-ship service (4 hour tiers + filament picker)
 ├── portfolio.html         # Portfolio & case studies (data-driven)
 ├── product.html           # Per-item detail page (?id=…)
 ├── project.html           # Per-project detail page (?id=…)
@@ -38,7 +39,9 @@ see [`ADMIN.md`](ADMIN.md)).
 │   └── config.yml
 ├── content/
 │   ├── products/*.json    # Decap-authored product files (auto-discovered)
-│   └── projects/*.json    # Decap-authored portfolio files (auto-discovered)
+│   ├── projects/*.json    # Decap-authored portfolio files (auto-discovered)
+│   ├── filaments/*.json   # Decap-authored filament colors for the MakerWorld service
+│   └── settings/          # Singleton site settings (e.g. makerworld-print.json)
 ├── partials/
 │   ├── header.html        # Shared header (loaded via fetch)
 │   └── footer.html        # Shared footer
@@ -51,6 +54,8 @@ see [`ADMIN.md`](ADMIN.md)).
 │       ├── config.js          # Stripe key, storefronts, analytics, newsletter (EDIT THIS)
 │       ├── products.js        # Legacy hand-edited product data (still works)
 │       ├── projects.js        # Legacy hand-edited portfolio data
+│       ├── makerworld-config.js # Defaults for the MakerWorld print service (tiers + filaments)
+│       ├── makerworld.js      # MakerWorld order-form logic (validates URL, totals, Stripe)
 │       ├── content-loader.js  # Merges /content/*.json files in at page load
 │       ├── main.js            # Renders product/project grids, wires Stripe buttons
 │       ├── detail.js          # Renders product/project detail pages + JSON-LD
@@ -64,6 +69,7 @@ see [`ADMIN.md`](ADMIN.md)).
 ├── CNAME                  # Custom domain for GitHub Pages
 ├── .nojekyll              # Tells GitHub Pages NOT to run Jekyll on this repo
 ├── STRIPE_SETUP.md        # How to wire up Stripe Checkout
+├── MAKERWORLD_SETUP.md    # How to configure the MakerWorld print-and-ship service
 ├── ADMIN.md               # How to use the /admin/ browser UI (Decap CMS)
 └── README.md              # You are here
 ```

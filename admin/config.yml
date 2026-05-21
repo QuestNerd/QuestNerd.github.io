@@ -33,9 +33,54 @@ publish_mode: editorial_workflow
 
 site_url: https://www.questnerd.com
 display_url: https://www.questnerd.com
-logo_url: /assets/img/questnerd-mark.svg
+logo_url: /assets/img/questnerd-logo.svg
 
 collections:
+  # ----- MakerWorld print service settings (singleton) ---------------------
+  - name: settings
+    label: Site settings
+    delete: false
+    editor: { preview: false }
+    files:
+      - name: makerworld
+        label: MakerWorld print service
+        file: content/settings/makerworld-print.json
+        format: json
+        fields:
+          - { name: intro, label: "Intro paragraph (top of makerworld-prints.html)", widget: text, required: false }
+          - name: tiers
+            label: "Hour tiers (in order)"
+            widget: list
+            hint: "Each tier needs a Stripe price ID (recommended) or Stripe Payment Link. Leave the four defaults if you want to keep the standard pricing."
+            fields:
+              - { name: id, label: "ID (slug)", widget: string, hint: "Lowercase, hyphens only. Used internally; don't change once orders exist." }
+              - { name: label, label: "Display label (e.g. 1 to 6 hour print)", widget: string }
+              - { name: maxHours, label: "Max hours covered", widget: number, value_type: int, default: 6 }
+              - { name: description, label: "Short description (one sentence)", widget: string, required: false }
+              - { name: price, label: "Display price (e.g. $18.00)", widget: string }
+              - { name: stripePriceId, label: "Stripe price ID", widget: string, required: false, hint: "Starts with price_ — recommended so the filament upcharge can be combined into one checkout." }
+              - { name: stripeLink, label: "Stripe Payment Link (alternative to price ID)", widget: string, required: false }
+
+  # ----- Filament colors --------------------------------------------------
+  - name: filaments
+    label: Filament colors
+    label_singular: Filament
+    folder: content/filaments
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: id
+    summary: "{{name}}  —  +{{addOnPrice}}"
+    sortable_fields: [name, addOnPrice]
+    fields:
+      - { name: id, label: "ID (slug)", widget: string, hint: "Lowercase, hyphens only. Don't change once orders exist." }
+      - { name: name, label: "Display name", widget: string }
+      - { name: swatch, label: "Swatch color (hex)", widget: string, default: "#3ee07a", pattern: ['^#[0-9a-fA-F]{6}$', "Use a 6-digit hex code like #3ee07a"] }
+      - { name: addOnPrice, label: "Add-on price (e.g. $0.00 for no upcharge)", widget: string, default: "$0.00" }
+      - { name: stripePriceId, label: "Stripe price ID for the add-on (leave blank if add-on price is $0.00)", widget: string, required: false }
+
   # ----- Products -----------------------------------------------------------
   - name: products
     label: Products
