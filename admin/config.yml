@@ -1,0 +1,173 @@
+# Decap CMS configuration for QuestNerd.
+#
+# This file drives the entire /admin/ browser UI. Every time you "Save" in
+# the admin, Decap commits a small JSON file to one of the two collections
+# below — plus any image / model / file uploads — directly to this repo.
+#
+# Auth: GitHub OAuth via Netlify's free OAuth broker, which works fine even
+# though the site itself is hosted on GitHub Pages. See ADMIN.md for the
+# 5-minute setup.
+
+backend:
+  name: github
+  # If you fork this repo, change the line below to your own
+  # "<owner>/<repo>" — otherwise Decap will keep committing to QuestNerd's repo.
+  repo: QuestNerd/QuestNerd.github.io
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+  commit_messages:
+    create: "content: add {{collection}} '{{slug}}'"
+    update: "content: update {{collection}} '{{slug}}'"
+    delete: "content: delete {{collection}} '{{slug}}'"
+    uploadMedia: "content: upload {{path}}"
+    deleteMedia: "content: delete {{path}}"
+
+# Where uploaded images / models / files go.
+media_folder: "assets/uploads"
+public_folder: "assets/uploads"
+
+# Show a friendly editorial workflow (drafts → review → merge) instead of
+# committing instantly. Optional; comment out for "save = publish".
+publish_mode: editorial_workflow
+
+site_url: https://www.questnerd.com
+display_url: https://www.questnerd.com
+logo_url: /assets/img/questnerd-mark.svg
+
+collections:
+  # ----- Products -----------------------------------------------------------
+  - name: products
+    label: Products
+    label_singular: Product
+    folder: content/products
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: id
+    summary: "{{title}}  —  {{type}}  —  {{price}}"
+    sortable_fields: [title, type, price]
+    view_filters:
+      - label: 3D models (Cults3D)
+        field: type
+        pattern: cults3d
+      - label: Physical prints (Etsy)
+        field: type
+        pattern: etsy
+      - label: Apps (Google Play)
+        field: type
+        pattern: googleplay
+      - label: PC downloads
+        field: type
+        pattern: pc-download
+      - label: Paid (Stripe)
+        field: type
+        pattern: stripe
+      - label: Featured on home page
+        field: featured
+        pattern: true
+    fields:
+      - { name: id, label: "URL slug (id)", widget: string, hint: "Lowercase, hyphens-only. Used in product.html?id=…" }
+      - name: type
+        label: Product type
+        widget: select
+        options:
+          - { label: "3D model (Cults3D)", value: cults3d }
+          - { label: "Physical print (Etsy)", value: etsy }
+          - { label: "Android app (Google Play)", value: googleplay }
+          - { label: "PC download (free)", value: pc-download }
+          - { label: "PC download (paid — Stripe)", value: stripe }
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: "Short description (card)", widget: text, hint: "1–2 sentences." }
+      - { name: longDescription, label: "Long description (detail page)", widget: markdown, required: false }
+      - { name: story, label: "The story behind it", widget: markdown, required: false }
+      - { name: price, label: "Display price", widget: string, hint: "e.g. \"$8.00\" or \"Free\"" }
+      - { name: featured, label: "Show on home page", widget: boolean, default: false, required: false }
+      - { name: image, label: "Main image", widget: image, required: false, hint: "Used on cards and as the detail-page hero." }
+      - name: images
+        label: Gallery
+        widget: list
+        required: false
+        field: { name: image, label: "Image", widget: image }
+      - { name: model, label: "3D model (.glb / .gltf)", widget: file, required: false, media_library: { config: { multiple: false } }, hint: "If set, the product page shows an interactive 3D viewer." }
+      - name: specs
+        label: Specs
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: value, label: Value, widget: string }
+      - name: files
+        label: "Downloadable files (PC downloads)"
+        widget: list
+        required: false
+        hint: "For free pc-download products, link directly. For Stripe items, list what the buyer gets (delivery is via the Stripe receipt)."
+        fields:
+          - { name: name, label: Filename, widget: string }
+          - { name: url, label: "Download URL", widget: file, required: false }
+          - { name: size, label: "Display size (optional)", widget: string, required: false }
+      - { name: url, label: "External URL (Cults3D / Etsy / Google Play / direct download)", widget: string, required: false }
+      - { name: stripePriceId, label: "Stripe price ID (paid items)", widget: string, required: false, hint: "Starts with price_ — find it in Stripe Dashboard → Products → Prices." }
+      - { name: stripeLink, label: "Stripe Payment Link (alternative to price ID)", widget: string, required: false }
+      - name: faq
+        label: FAQ
+        widget: list
+        required: false
+        fields:
+          - { name: q, label: Question, widget: string }
+          - { name: a, label: Answer, widget: text }
+      - name: tags
+        label: Tags
+        widget: list
+        required: false
+        field: { name: tag, label: Tag, widget: string }
+
+  # ----- Portfolio / Projects -----------------------------------------------
+  - name: projects
+    label: Portfolio (case studies)
+    label_singular: Project
+    folder: content/projects
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: id
+    summary: "{{title}}  —  {{date}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: id, label: "URL slug (id)", widget: string, hint: "Lowercase, hyphens-only. Used in project.html?id=…" }
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: string, hint: "e.g. \"2026-05\" — used for sorting newest-first." }
+      - { name: role, label: "Your role", widget: string, required: false }
+      - { name: summary, label: "Short summary (card)", widget: text }
+      - { name: story, label: "Full case study", widget: markdown, required: false }
+      - { name: image, label: "Cover image", widget: image, required: false }
+      - name: images
+        label: Gallery
+        widget: list
+        required: false
+        field: { name: image, label: "Image", widget: image }
+      - { name: moneySpent, label: "Money spent", widget: string, required: false, hint: "Free-form. E.g. \"$640 (resin + toolhead)\"." }
+      - { name: moneySaved, label: "Money saved", widget: string, required: false, hint: "Free-form. E.g. \"~12 hrs/wk of manual work\"." }
+      - { name: duration, label: "Duration", widget: string, required: false, hint: "E.g. \"6 weeks\", \"90 days\"." }
+      - name: tech
+        label: Tech / tools
+        widget: list
+        required: false
+        field: { name: tag, label: Tag, widget: string }
+      - { name: outcome, label: "Headline outcome", widget: string, required: false, hint: "One sentence. The win." }
+      - name: links
+        label: Links (live demos, repos, store pages…)
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: url, label: URL, widget: string }
+      - name: tags
+        label: Tags
+        widget: list
+        required: false
+        field: { name: tag, label: Tag, widget: string }

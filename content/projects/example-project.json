@@ -1,0 +1,15 @@
+{
+  "id": "example-project",
+  "title": "Example Project (delete me)",
+  "date": "2026-01",
+  "role": "Solo engineer",
+  "summary": "Demonstrates how Decap CMS writes a portfolio entry into content/projects/. Delete me from /admin/.",
+  "story": "<p>This file proves the pipeline end-to-end. When Decap commits a new project, content-loader.js picks it up on the next page-load and the entry appears on portfolio.html plus its own project.html?id=… page.</p>",
+  "image": "assets/img/questnerd-mark.svg",
+  "moneySpent": "$0",
+  "moneySaved": "all the manual file-editing time",
+  "duration": "an afternoon",
+  "tech": ["Decap CMS", "GitHub Pages", "Vanilla JS"],
+  "outcome": "Adding products no longer requires editing JS.",
+  "tags": ["example", "delete-me"]
+}

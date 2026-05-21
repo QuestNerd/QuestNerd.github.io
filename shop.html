@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop — QuestNerd</title>
+  <meta name="description" content="The full QuestNerd catalog: 3D models, physical prints, Android apps, and PC downloads.">
+  <meta property="og:title" content="Shop — QuestNerd">
+  <meta property="og:description" content="The full QuestNerd catalog: 3D models, physical prints, Android apps, and PC downloads.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/content-loader.js" defer></script>
+  <script src="assets/js/utm.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/stripe-checkout.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="section">
+      <div class="section-head">
+        <h1>Shop</h1>
+        <p class="meta">Everything QuestNerd makes — pulled from a single source of truth in <code>assets/js/products.js</code>.</p>
+      </div>
+
+      <h2>3D Models (Digital — Cults3D)</h2>
+      <div data-qn-grid data-qn-type="cults3d"
+           data-qn-empty="No digital models yet. Add `type: 'cults3d'` items to assets/js/products.js."></div>
+
+      <h2 style="margin-top:2rem;">Physical Prints (Etsy)</h2>
+      <div data-qn-grid data-qn-type="etsy"
+           data-qn-empty="No physical prints yet. Add `type: 'etsy'` items to assets/js/products.js."></div>
+
+      <h2 style="margin-top:2rem;">Apps (Google Play)</h2>
+      <div data-qn-grid data-qn-type="googleplay"
+           data-qn-empty="No apps yet. Add `type: 'googleplay'` items to assets/js/products.js."></div>
+
+      <h2 style="margin-top:2rem;">PC Downloads</h2>
+      <div data-qn-grid data-qn-type="pc-download,stripe"
+           data-qn-empty="No PC downloads yet. Add `type: 'pc-download'` or `type: 'stripe'` items to assets/js/products.js."></div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>

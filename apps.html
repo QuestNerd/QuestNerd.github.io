@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apps &amp; Games — QuestNerd</title>
+  <meta name="description" content="QuestNerd Android apps and games on Google Play.">
+  <meta property="og:title" content="Apps &amp; Games — QuestNerd">
+  <meta property="og:description" content="QuestNerd Android apps and games on Google Play.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/content-loader.js" defer></script>
+  <script src="assets/js/utm.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/stripe-checkout.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="section">
+      <div class="section-head">
+        <h1>Apps &amp; Games</h1>
+        <p class="meta">Original Android apps and games, available on Google Play.</p>
+      </div>
+
+      <div class="card" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+        <p style="margin:0;">Browse everything QuestNerd has published on Google Play.</p>
+        <a class="qn-button" data-config-href="GOOGLE_PLAY_URL" href="#" target="_blank" rel="noopener noreferrer">Open Google Play developer page</a>
+      </div>
+
+      <!--
+        NEW APP? Add an entry to assets/js/products.js with:
+          { id, type: 'googleplay', title, description, image, price, url }
+        `url` should be the full Play Store listing URL.
+      -->
+      <div style="margin-top:2rem;" data-qn-grid data-qn-type="googleplay"
+           data-qn-empty="No apps yet. Add `type: 'googleplay'` items to assets/js/products.js."></div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>

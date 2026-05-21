@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanks for your order — QuestNerd</title>
+  <meta name="description" content="Stripe checkout successful.">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="Thanks for your order — QuestNerd">
+  <meta property="og:description" content="Stripe checkout successful.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/content-loader.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script>
+    // Surface a friendly order reference (Stripe appends ?session_id=cs_… on
+    // successful Checkout redirects) and pull product hints from ?id=...
+    document.addEventListener('DOMContentLoaded', function () {
+      var p = new URLSearchParams(window.location.search);
+      var session = p.get('session_id') || p.get('order') || '';
+      var ref = document.getElementById('qn-order-ref');
+      if (ref && session) {
+        var short = session.length > 14 ? session.slice(0, 14) + '…' : session;
+        ref.textContent = short;
+        ref.parentElement.hidden = false;
+      }
+      // Show download instructions card for purchases of paid downloads.
+      var productId = p.get('id') || '';
+      if (productId) {
+        var prod = (window.QN_PRODUCTS || []).filter(function (x) { return x.id === productId; })[0];
+        var dl = document.getElementById('qn-order-download');
+        if (prod && dl) {
+          dl.hidden = false;
+          // Use textContent (not innerHTML) so product titles cannot inject HTML.
+          dl.querySelector('h2').textContent = prod.title || '';
+          if (prod.files && prod.files.length) {
+            var ul = dl.querySelector('ul');
+            ul.textContent = '';
+            prod.files.forEach(function (f) {
+              var li = document.createElement('li');
+              if (f.url) {
+                var a = document.createElement('a');
+                a.href = f.url;
+                a.textContent = f.name || f.url;
+                li.appendChild(a);
+              } else {
+                li.textContent = f.name || '';
+              }
+              if (f.size) {
+                var span = document.createElement('span');
+                span.className = 'meta';
+                span.textContent = ' (' + f.size + ')';
+                li.appendChild(span);
+              }
+              ul.appendChild(li);
+            });
+          }
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="section">
+      <article class="card entry-content" style="text-align:center;">
+        <h1>Thanks for your order! 🎉</h1>
+        <p class="hero-lede">Your payment went through and Stripe has sent you a receipt by email.</p>
+        <p hidden>Order reference: <code id="qn-order-ref">—</code></p>
+        <p>
+          If your purchase included a digital download, you'll receive delivery instructions
+          by email shortly. If anything seems off, just reply to the receipt or
+          <a href="contact.html">contact QuestNerd</a> directly.
+        </p>
+        <div class="hero-cta-row" style="justify-content:center;">
+          <a class="qn-button" href="index.html">Back to home</a>
+          <a class="qn-button ghost" href="shop.html">Keep shopping</a>
+        </div>
+      </article>
+
+      <article id="qn-order-download" class="card" hidden style="margin-top:1.5rem;">
+        <h2>Your download</h2>
+        <p class="meta">If your purchase included one of the files below, the email receipt has the download link. The list is shown here for reference.</p>
+        <ul class="qn-files"></ul>
+      </article>
+    </section>
+
+    <section class="section" id="cross-sell">
+      <div class="section-head">
+        <h2>While you're here…</h2>
+        <p class="meta">Other things people who buy from QuestNerd tend to like.</p>
+      </div>
+      <div data-qn-grid data-qn-featured data-qn-limit="3"
+           data-qn-empty="Add `featured: true` items to assets/js/products.js to populate cross-sells."></div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>

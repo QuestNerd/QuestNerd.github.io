@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC Downloads — QuestNerd</title>
+  <meta name="description" content="QuestNerd PC software, tools, and downloadable resources. Free and paid via Stripe Checkout.">
+  <meta property="og:title" content="PC Downloads — QuestNerd">
+  <meta property="og:description" content="QuestNerd PC software, tools, and downloadable resources. Free and paid via Stripe Checkout.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/content-loader.js" defer></script>
+  <script src="assets/js/utm.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/stripe-checkout.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="section">
+      <div class="section-head">
+        <h1>PC Downloads</h1>
+        <p class="meta">Software, tools, and resources for your PC. Free items download directly; paid items use secure Stripe Checkout.</p>
+      </div>
+
+      <h2>Free downloads</h2>
+      <!--
+        NEW FREE DOWNLOAD? Add an entry to assets/js/products.js with:
+          { id, type: 'pc-download', title, description, image, price: 'Free', url }
+        `url` may be an external host or a path like 'downloads/yourfile.zip'.
+      -->
+      <div data-qn-grid data-qn-type="pc-download"
+           data-qn-empty="No free downloads yet. Add `type: 'pc-download'` items to assets/js/products.js."></div>
+
+      <h2 style="margin-top:2rem;">Paid downloads (Stripe Checkout)</h2>
+      <p class="meta">Click <strong>Buy now</strong> to pay securely on Stripe. After checkout you'll be returned to <code>success.html</code>.</p>
+      <!--
+        NEW PAID DOWNLOAD? Add an entry to assets/js/products.js with:
+          { id, type: 'stripe', title, description, image, price, stripePriceId: 'price_XXXX' }
+        OR use `stripeLink: 'https://buy.stripe.com/XXXX'` for a Stripe Payment Link.
+        See STRIPE_SETUP.md for instructions.
+      -->
+      <div data-qn-grid data-qn-type="stripe"
+           data-qn-empty="No paid downloads yet. Add `type: 'stripe'` items to assets/js/products.js. See STRIPE_SETUP.md."></div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>

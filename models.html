@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Models — QuestNerd</title>
+  <meta name="description" content="QuestNerd 3D models: digital STL downloads via Cults3D and printed physical pieces via Etsy.">
+  <meta property="og:title" content="3D Models — QuestNerd">
+  <meta property="og:description" content="QuestNerd 3D models: digital STL downloads via Cults3D and printed physical pieces via Etsy.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/content-loader.js" defer></script>
+  <script src="assets/js/utm.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/stripe-checkout.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="section">
+      <div class="section-head">
+        <h1>3D Models</h1>
+        <p class="meta">Digital STL/OBJ downloads on Cults3D, and ready-to-ship physical prints on Etsy.</p>
+      </div>
+
+      <div class="card" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+        <p style="margin:0;">Prefer to browse on the storefront directly?</p>
+        <div class="hero-cta-row">
+          <a class="qn-button" data-config-href="CULTS3D_URL" href="#" target="_blank" rel="noopener noreferrer">Open Cults3D shop</a>
+          <a class="qn-button ghost" data-config-href="ETSY_URL" href="#" target="_blank" rel="noopener noreferrer">Open Etsy shop</a>
+        </div>
+      </div>
+
+      <h2 style="margin-top:2rem;">Digital downloads — Cults3D</h2>
+      <p class="meta">Print at home. Pre-supported STL/OBJ files with print profiles where available.</p>
+      <!--
+        NEW DIGITAL MODEL? Add an entry to assets/js/products.js with:
+          { id, type: 'cults3d', title, description, image, price, url }
+      -->
+      <div data-qn-grid data-qn-type="cults3d"
+           data-qn-empty="No digital models yet. Add `type: 'cults3d'` items to assets/js/products.js."></div>
+
+      <h2 style="margin-top:2rem;">Physical prints — Etsy</h2>
+      <p class="meta">Hand-printed by QuestNerd. Ships worldwide via Etsy.</p>
+      <!--
+        NEW PHYSICAL PRINT? Add an entry to assets/js/products.js with:
+          { id, type: 'etsy', title, description, image, price, url }
+      -->
+      <div data-qn-grid data-qn-type="etsy"
+           data-qn-empty="No physical prints yet. Add `type: 'etsy'` items to assets/js/products.js."></div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>

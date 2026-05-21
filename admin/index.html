@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuestNerd Admin — Content Manager</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/questnerd-mark.svg">
+</head>
+<body>
+  <!--
+    Decap CMS bootstrap.
+
+    This single page hosts the entire QuestNerd admin UI. It runs entirely in
+    your browser — there is no server. When you save a product or a portfolio
+    project here, Decap commits the resulting JSON file (and any uploaded
+    images / .glb models / downloads) directly to this GitHub repo. GitHub
+    Pages then redeploys, and the new entry shows up on the site within ~30s.
+
+    Authentication: see ADMIN.md. You must set up a GitHub OAuth broker
+    (Netlify offers a free hosted one, or self-host) before login works.
+
+    SECURITY: Decap is loaded from a public CDN and pinned to an exact version
+    so the URL is reproducible. For maximum integrity protection, regenerate
+    the file's SHA-384 hash and add `integrity="sha384-…" crossorigin="anonymous"`
+    to the script tag (the unauthenticated build sandbox here can't reach the
+    CDN to compute it). See ADMIN.md for instructions.
+  -->
+  <script src="https://unpkg.com/decap-cms@3.6.0/dist/decap-cms.js"></script>
+</body>
+</html>

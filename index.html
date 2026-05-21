@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuestNerd — Print · Build · Play</title>
+  <meta name="description" content="QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all.">
+  <meta property="og:title" content="QuestNerd — Print · Build · Play">
+  <meta property="og:description" content="QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QuestNerd",
+    "url": "https://www.questnerd.com/",
+    "description": "QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all."
+  }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/content-loader.js" defer></script>
+  <script src="assets/js/utm.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/stripe-checkout.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/newsletter.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Build. Print. Play. <span class="accent">Ship</span>.</h1>
+          <p class="hero-lede">QuestNerd is the hub for high-quality 3D printed products, digital STL/OBJ models, original apps and games, and the project portfolio behind it all — built by one engineer who actually ships.</p>
+          <div class="hero-cta-row">
+            <a class="qn-button" href="shop.html">Shop 3D Prints &amp; Models</a>
+            <a class="qn-button ghost" href="portfolio.html">See the portfolio</a>
+          </div>
+          <div class="trust-row">
+            <span class="badge">Secure checkout</span>
+            <span class="badge">Worldwide shipping</span>
+            <span class="badge">Interactive 3D previews</span>
+            <span class="badge">Built &amp; supported by the maker</span>
+          </div>
+        </div>
+        <aside class="hero-art" aria-hidden="true">
+          <img class="qn-logo" src="assets/img/questnerd-mark.svg" alt="" width="360" height="360">
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="section-head">
+        <h2>Featured 3D Prints &amp; Models</h2>
+        <p class="meta"><a href="shop.html">Browse the full shop →</a></p>
+      </div>
+      <!-- Featured products are rendered from assets/js/products.js (items with `featured: true`). -->
+      <div data-qn-grid data-qn-featured data-qn-limit="4"
+           data-qn-empty="Add featured products in assets/js/products.js (set `featured: true`)."></div>
+    </section>
+
+    <section class="section" id="apps-games">
+      <div class="section-head">
+        <h2>Apps &amp; Games</h2>
+        <p class="meta"><a href="apps.html">See all apps &amp; games →</a></p>
+      </div>
+      <div data-qn-grid data-qn-type="googleplay" data-qn-limit="3"
+           data-qn-empty="Add Google Play entries in assets/js/products.js."></div>
+    </section>
+
+    <section class="section" id="model-viewer-demo">
+      <div class="section-head">
+        <h2>Spin it before you buy it</h2>
+        <p class="meta">Every model listing can support an interactive 3D preview.</p>
+      </div>
+      <div class="card">
+        <p>Embed any <code>.glb</code> / <code>.gltf</code> file into a product page by dropping a <code>&lt;model-viewer&gt;</code> element into the HTML — visitors can rotate, zoom, and inspect the model in their browser, on mobile or desktop, with no plugins.</p>
+        <div class="model-viewer-wrap">
+          <model-viewer
+            src="assets/models/sample-cube.glb"
+            alt="Interactive 3D preview — a sample QuestNerd cube"
+            camera-controls
+            auto-rotate
+            ar
+            shadow-intensity="1"
+            exposure="0.9"
+            style="width:100%; height:360px; background:#061008;">
+          </model-viewer>
+        </div>
+        <p class="meta">Drag to rotate · scroll to zoom · tap the AR icon on mobile. Add a <code>model</code> field to any entry in <code>assets/js/products.js</code> to surface a live 3D preview on its product page.</p>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="section-head">
+        <h2>Portfolio &amp; Case Studies</h2>
+        <p class="meta"><a href="portfolio.html">Read every project →</a></p>
+      </div>
+      <div data-qn-projects data-qn-limit="2"
+           data-qn-empty="No projects yet. Add entries to assets/js/projects.js (or via /admin/) to populate this grid."></div>
+    </section>
+
+    <section class="section" id="downloads-cta">
+      <div class="section-head">
+        <h2>PC Downloads</h2>
+        <p class="meta"><a href="downloads.html">All downloads →</a></p>
+      </div>
+      <div data-qn-grid data-qn-type="pc-download,stripe" data-qn-limit="3"
+           data-qn-empty="Add PC downloads in assets/js/products.js."></div>
+    </section>
+
+    <section class="section">
+      <div class="newsletter">
+        <div>
+          <h2>Get drops, devlogs, and discount codes</h2>
+          <p class="meta">Occasional emails. Early access to new prints and apps. Unsubscribe anytime.</p>
+        </div>
+        <form data-qn-newsletter aria-label="Newsletter signup">
+          <label class="screen-reader-text" for="qn-newsletter-email">Email address</label>
+          <input id="qn-newsletter-email" type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit">Subscribe</button>
+          <p class="qn-newsletter-msg meta" hidden role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!--
+  QuestNerd — landing-page template.
+
+  Copy this file to landing/<campaign-slug>.html and edit the inline content
+  blocks marked with TODO. Landing pages are intentionally stripped down:
+
+    - No global header/footer (focus + faster load)
+    - One hero, one CTA, one product/project the page is about
+    - Social proof + FAQ for trust
+    - Sticky bottom CTA so the action is always one tap away
+
+  UTM params from the inbound ad URL are captured by assets/js/utm.js and
+  carried forward onto any outbound storefront / Stripe link.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TODO Campaign Title — QuestNerd</title>
+  <meta name="description" content="TODO single-sentence pitch for this campaign.">
+  <meta property="og:title" content="TODO Campaign Title — QuestNerd">
+  <meta property="og:description" content="TODO single-sentence pitch for this campaign.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/questnerd-mark.svg">
+  <script src="../assets/js/config.js" defer></script>
+  <script src="../assets/js/products.js" defer></script>
+  <script src="../assets/js/projects.js" defer></script>
+  <script src="../assets/js/content-loader.js" defer></script>
+  <script src="../assets/js/utm.js" defer></script>
+  <script src="../assets/js/analytics.js" defer></script>
+  <script src="../assets/js/stripe-checkout.js" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body class="qn-landing">
+
+  <main class="qn-wrap">
+    <header style="padding:1.5rem 0 0; display:flex; justify-content:space-between; align-items:center;">
+      <a href="../index.html" rel="home" aria-label="QuestNerd home">
+        <img src="../assets/img/questnerd-mark.svg" alt="QuestNerd" width="48" height="48">
+      </a>
+      <a class="qn-button ghost" href="../shop.html">Browse shop</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>TODO punchy headline <span class="accent">with one accented phrase</span>.</h1>
+          <p class="hero-lede">TODO 1–2 sentence pitch that names the audience, the pain, and the result.</p>
+          <div class="hero-cta-row">
+            <!-- For a paid download, point this at the Stripe item id you sell -->
+            <button class="qn-button" type="button" data-qn-buy="pro-tool">Buy now — $19</button>
+            <a class="qn-button ghost" href="../product.html?id=pro-tool">See full details</a>
+          </div>
+          <div class="trust-row">
+            <span class="badge">Instant download</span>
+            <span class="badge">30-day refund</span>
+            <span class="badge">Built by the maker</span>
+            <span class="badge">Secure Stripe checkout</span>
+          </div>
+        </div>
+        <aside class="hero-art" aria-hidden="true">
+          <img class="qn-logo" src="../assets/img/questnerd-mark.svg" alt="" width="320" height="320">
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>What buyers say</h2></div>
+      <div class="qn-social-proof">
+        <blockquote>"TODO real testimonial here. Replace with a quote from a happy buyer."<cite>— A happy customer</cite></blockquote>
+        <blockquote>"TODO a second testimonial that emphasizes a different benefit."<cite>— Another customer</cite></blockquote>
+        <blockquote>"TODO a third short one. Keep it punchy."<cite>— Power user</cite></blockquote>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Frequently asked</h2></div>
+      <div class="qn-faq">
+        <details><summary>TODO Question 1?</summary><div>TODO answer.</div></details>
+        <details><summary>TODO Question 2?</summary><div>TODO answer.</div></details>
+        <details><summary>TODO Question 3?</summary><div>TODO answer.</div></details>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="section-head"><h2>Also from QuestNerd</h2></div>
+      <div data-qn-grid data-qn-featured data-qn-limit="3"></div>
+    </section>
+  </main>
+
+  <div class="qn-landing-sticky-cta">
+    <p class="meta">Ready to ship? Get the tool today.</p>
+    <button class="qn-button" type="button" data-qn-buy="pro-tool">Buy now — $19</button>
+  </div>
+</body>
+</html>
