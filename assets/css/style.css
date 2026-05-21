@@ -83,7 +83,7 @@ img { max-width: 100%; height: auto; }
 .site-branding svg.qn-logo {
   display: block;
   width: auto;
-  height: clamp(72px, 8.5vw, 104px);
+  height: clamp(72px, 8.5vw, 208px);
   max-width: 100%;
 }
 .site-branding .qn-logo-link,
