@@ -78,7 +78,7 @@ img { max-width: 100%; height: auto; }
 
 .site-branding a { color: inherit; }
 .site-branding img,
-.site-branding svg.qn-logo { max-height: 52px; width: auto; display: block; }
+.site-branding svg.qn-logo { max-height: 104px; width: auto; display: block; }
 .site-branding .qn-logo-link,
 .site-branding .qn-logo-fallback { display: inline-flex; align-items: center; }
 
