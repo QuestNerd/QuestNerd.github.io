@@ -93,6 +93,57 @@
 
   window.QN_STRIPE = {
     checkoutProduct: checkoutProduct,
+    /**
+     * Lower-level Stripe Checkout helper for callers that already know
+     * exactly which line items they want (e.g. the MakerWorld order form
+     * that combines a base tier line item with an optional filament
+     * upcharge line item). Accepts an options object:
+     *
+     *   {
+     *     lineItems: [{ price: 'price_…', quantity: 1 }, …],  // required
+     *     clientReferenceId: 'optional-string',
+     *   }
+     *
+     * Returns a Promise that resolves once the redirect kicks in or
+     * rejects with a human-readable Error.
+     */
+    checkoutProductCustom: function (opts) {
+      opts = opts || {};
+      var config = window.QN_CONFIG || {};
+      var pubKey = config.STRIPE_PUBLISHABLE_KEY || '';
+      var lineItems = opts.lineItems || [];
+      if (!lineItems.length) {
+        return Promise.reject(new Error('No line items provided for Stripe Checkout.'));
+      }
+      if (!pubKey || pubKey.indexOf('REPLACE_ME') !== -1) {
+        return Promise.reject(new Error(
+          'Stripe is not configured yet. Set STRIPE_PUBLISHABLE_KEY in assets/js/config.js.'
+        ));
+      }
+      for (var i = 0; i < lineItems.length; i++) {
+        var li = lineItems[i] || {};
+        if (!li.price || String(li.price).indexOf('REPLACE_ME') !== -1) {
+          return Promise.reject(new Error(
+            'One of the Stripe price IDs is missing or still set to a REPLACE_ME placeholder.'
+          ));
+        }
+      }
+      return loadStripeJs().then(function (StripeCtor) {
+        if (!StripeCtor) throw new Error('Stripe.js failed to initialise.');
+        var stripe = StripeCtor(pubKey);
+        var origin = window.location.origin;
+        var redirectOpts = {
+          lineItems: lineItems,
+          mode: 'payment',
+          successUrl: origin + '/success.html',
+          cancelUrl: origin + '/cancel.html',
+        };
+        if (opts.clientReferenceId) redirectOpts.clientReferenceId = String(opts.clientReferenceId);
+        return stripe.redirectToCheckout(redirectOpts).then(function (result) {
+          if (result && result.error) throw new Error(result.error.message || 'Stripe redirect failed.');
+        });
+      });
+    },
     isReady: function () {
       var c = window.QN_CONFIG || {};
       return !!c.STRIPE_PUBLISHABLE_KEY && c.STRIPE_PUBLISHABLE_KEY.indexOf('REPLACE_ME') === -1;

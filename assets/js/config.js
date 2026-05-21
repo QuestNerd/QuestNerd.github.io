@@ -30,6 +30,19 @@ window.QN_CONFIG = {
   // -------- Contact --------
   CONTACT_EMAIL: 'hello@questnerd.com', // TODO update
 
+  // -------- MakerWorld print service --------
+  // Optional webhook that receives a POST with the full order details
+  // (chosen tier, filament, makerworld.com URL, totals, timestamp) the
+  // moment a buyer clicks "Place order & pay" — *before* they get
+  // handed off to Stripe. Use a free Formspree, Zapier, or Make.com
+  // webhook so the URL lands in your inbox even if Stripe's
+  // seller-receipt doesn't include the client_reference_id field.
+  //
+  // Example: 'https://formspree.io/f/XXXXXXXX'
+  // Leave empty to skip the webhook (Stripe's dashboard + receipt
+  // still encode the URL via client_reference_id).
+  MAKERWORLD_NOTIFY_URL: '',
+
   // -------- Newsletter --------
   // Submit the home-page signup form to one of the providers below.
   //   - Formspree:   'https://formspree.io/f/XXXXXXXX'

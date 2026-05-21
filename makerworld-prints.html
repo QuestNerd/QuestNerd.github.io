@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MakerWorld Print Service — QuestNerd</title>
+  <meta name="description" content="Pick any 3D model on makerworld.com and have QuestNerd print and ship it. Pay by the print-time tier and choose your filament color.">
+  <meta property="og:title" content="MakerWorld Print Service — QuestNerd">
+  <meta property="og:description" content="Pick any 3D model on makerworld.com and have QuestNerd print and ship it.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/questnerd-mark.svg">
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/makerworld-config.js" defer></script>
+  <script src="assets/js/content-loader.js" defer></script>
+  <script src="assets/js/utm.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/stripe-checkout.js" defer></script>
+  <script src="assets/js/partials.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/makerworld.js" defer></script>
+</head>
+<body>
+  <div data-include="header"></div>
+
+  <main class="qn-wrap">
+    <section class="section">
+      <div class="section-head">
+        <h1>MakerWorld Print Service</h1>
+        <p class="meta">
+          Find anything you want on <a href="https://makerworld.com/" target="_blank" rel="noopener noreferrer">makerworld.com</a>,
+          pick how long it takes to print, choose a filament color, and I'll print it and ship it to you.
+        </p>
+      </div>
+
+      <div class="card mw-card">
+        <div data-mw-host>
+          <p class="meta">Loading order form…</p>
+        </div>
+      </div>
+
+      <section class="qn-faq" style="margin-top:2rem;">
+        <h2>How it works</h2>
+        <details open>
+          <summary>1. Pick a print-time tier</summary>
+          <div>
+            <p>Every model on MakerWorld lists its estimated print time. Pick the
+            tier that covers it: <strong>1 hour or less</strong>,
+            <strong>1 to 6 hours</strong>, <strong>6 to 12 hours</strong>, or
+            <strong>12 to 24 hours</strong>. If the print is longer than 24 hours
+            or has unusual requirements,
+            <a href="contact.html">message me first</a> for a custom quote.</p>
+          </div>
+        </details>
+        <details>
+          <summary>2. Choose a filament color</summary>
+          <div>
+            <p>Standard PLA colors are included in the base price. Premium
+            colors (silks, gradients, exotic blends) carry a small upcharge
+            that's added on at checkout.</p>
+          </div>
+        </details>
+        <details>
+          <summary>3. Paste the MakerWorld URL</summary>
+          <div>
+            <p>I only accept links on <code>makerworld.com</code>. Paste the URL
+            for the exact model (and specific profile/variant, if relevant).</p>
+          </div>
+        </details>
+        <details>
+          <summary>4. Pay through Stripe, then I print &amp; ship</summary>
+          <div>
+            <p>You'll be handed off to Stripe for secure checkout. The order
+            details — including your MakerWorld URL and chosen filament — come
+            straight to me. Shipping is calculated by Stripe at checkout.
+            I'll email you a tracking number once it ships.</p>
+          </div>
+        </details>
+      </section>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+</body>
+</html>
