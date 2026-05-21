@@ -6,8 +6,15 @@
       </a>
     </div>
     <nav class="main-nav" aria-label="Main menu">
-      <button class="menu-toggle" type="button" aria-expanded="false">Menu</button>
-      <ul>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+        <svg class="menu-toggle-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <line class="menu-toggle-bar menu-toggle-bar-1" x1="3" y1="6" x2="21" y2="6"/>
+          <line class="menu-toggle-bar menu-toggle-bar-2" x1="3" y1="12" x2="21" y2="12"/>
+          <line class="menu-toggle-bar menu-toggle-bar-3" x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <span class="screen-reader-text">Menu</span>
+      </button>
+      <ul id="primary-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="models.html">3D Models</a></li>

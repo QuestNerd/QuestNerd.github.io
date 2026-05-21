@@ -11,8 +11,10 @@
     toggle.__qnWired = true;
     toggle.addEventListener('click', function () {
       var expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      nav.classList.toggle('open');
+      var open = !expanded;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      nav.classList.toggle('open', open);
     });
   }
   if (document.readyState === 'loading') {
