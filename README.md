@@ -8,6 +8,17 @@ No build step, no server runtime, no PHP. Editing happens either by hand in
 the JS data files, or through the browser admin UI at `/admin/` (Decap CMS,
 see [`ADMIN.md`](ADMIN.md)).
 
+### Porting to WordPress
+
+If you want to host this site on WordPress instead of GitHub Pages, the
+`wordpress/` directory contains a drop-in theme
+(`wordpress/themes/questnerd/`) and a companion plugin
+(`wordpress/plugins/questnerd-content/`) that reproduces every page,
+adds custom post types for products/projects/filaments, and imports the
+existing `content/**/*.json` files. Follow
+[`WORDPRESS_MIGRATION.md`](WORDPRESS_MIGRATION.md) for a step-by-step
+walkthrough.
+
 ## What's where
 
 ```

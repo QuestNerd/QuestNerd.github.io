@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" class="qn-logo" role="img" aria-label="QuestNerd" width="240" height="58">
+  <defs>
+    <linearGradient id="qnGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3ee07a"/>
+      <stop offset="100%" stop-color="#138a3d"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(6,6)">
+    <rect x="0" y="0" width="76" height="76" rx="16" fill="#0b140c" stroke="url(#qnGreen)" stroke-width="2"/>
+    <path d="M22 44c0-11 9-20 20-20s20 9 20 20-9 20-20 20c-4 0-7-1-10-3l-8 6 4-9c-4-4-6-9-6-14z"
+          fill="none" stroke="url(#qnGreen)" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M44 36l8 8-8 8-8-8z" fill="url(#qnGreen)"/>
+  </g>
+  <g fill="#e7f3e7" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif" font-weight="700">
+    <text x="98" y="46" font-size="30" letter-spacing="1">QUEST<tspan fill="url(#qnGreen)">NERD</tspan></text>
+    <text x="99" y="68" font-size="12" font-weight="500" letter-spacing="3" fill="#9dc09d">PRINT · BUILD · PLAY</text>
+  </g>
+</svg>
