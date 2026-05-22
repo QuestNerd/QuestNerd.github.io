@@ -51,7 +51,7 @@
     var price = escapeHtml(product.price || '');
     var img = escapeHtml(product.image || 'assets/img/questnerd-mark.svg');
     var typeLabel = STORE_LABELS[product.type] || 'View';
-    var detailHref = 'product.html?id=' + encodeURIComponent(product.id || '');
+    var detailHref = '/product/' + encodeURIComponent(product.id || '') + '/';
 
     var actionHtml;
     if (product.type === 'stripe') {
@@ -92,7 +92,7 @@
     var summary = escapeHtml(project.summary || '');
     var date = escapeHtml(project.date || '');
     var img = escapeHtml(project.image || 'assets/img/questnerd-mark.svg');
-    var href = 'project.html?id=' + encodeURIComponent(project.id || '');
+    var href = '/project/' + encodeURIComponent(project.id || '') + '/';
     return (
       '<article class="product-card" aria-label="' + title + '">' +
         '<a class="product-thumb-link" href="' + href + '">' +

@@ -267,7 +267,7 @@
     container.classList.add('product-grid');
     container.innerHTML = related.map(function (p) {
       var img = escapeHtml(p.image || 'assets/img/questnerd-mark.svg');
-      var href = mode === 'project' ? 'project.html?id=' + encodeURIComponent(p.id) : 'product.html?id=' + encodeURIComponent(p.id);
+      var href = mode === 'project' ? '/project/' + encodeURIComponent(p.id) + '/' : '/product/' + encodeURIComponent(p.id) + '/';
       return '<a class="product-card" href="' + href + '" style="text-decoration:none;color:inherit;">' +
         '<div class="product-thumb"><img src="' + img + '" alt="' + escapeHtml(p.title) + '"></div>' +
         '<h3 class="product-title">' + escapeHtml(p.title) + '</h3>' +
@@ -302,7 +302,7 @@
     var notFoundHtml = '<div class="card" style="text-align:center;">' +
       '<h1>Not found</h1>' +
       '<p class="meta">' + (mode === 'project' ? 'No project' : 'No product') + ' matches that id.</p>' +
-      '<p><a class="qn-button" href="' + (mode === 'project' ? 'portfolio.html' : 'shop.html') + '">Back to ' +
+      '<p><a class="qn-button" href="' + (mode === 'project' ? '/portfolio/' : '/shop/') + '">Back to ' +
       (mode === 'project' ? 'portfolio' : 'shop') + '</a></p></div>';
     if (!id) { container.innerHTML = notFoundHtml; return; }
     var pool = mode === 'project' ? (window.QN_PROJECTS || []) : (window.QN_PRODUCTS || []);

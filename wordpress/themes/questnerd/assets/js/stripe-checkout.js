@@ -83,8 +83,8 @@
       return stripe.redirectToCheckout({
         lineItems: [{ price: priceId, quantity: 1 }],
         mode: 'payment',
-        successUrl: origin + '/success.html',
-        cancelUrl: origin + '/cancel.html',
+        successUrl: origin + '/success/',
+        cancelUrl: origin + '/cancel/',
       }).then(function (result) {
         if (result && result.error) throw new Error(result.error.message || 'Stripe redirect failed.');
       });

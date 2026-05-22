@@ -184,7 +184,7 @@ function qn_get_config_for_js() {
 		'SITE_TAGLINE'           => get_bloginfo( 'description' ),
 		'SITE_URL'               => $site_url,
 		'OG_IMAGE'               => get_theme_mod( 'qn_og_image', QN_THEME_URI . '/assets/img/og-image.svg' ),
-		'CURRENT_YEAR'           => (int) date( 'Y' ),
+		'CURRENT_YEAR'           => (int) current_time( 'Y' ),
 		'STRIPE_PUBLISHABLE_KEY' => get_theme_mod( 'qn_stripe_pk', '' ),
 		'CULTS3D_URL'            => get_theme_mod( 'qn_cults3d_url', '' ),
 		'ETSY_URL'               => get_theme_mod( 'qn_etsy_url', '' ),

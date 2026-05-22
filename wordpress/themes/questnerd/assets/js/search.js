@@ -11,14 +11,14 @@
   var lunrPromise = null;
   var indexPromise = null;
   var STATIC_DOCS = [
-    { id: 'page:home',       title: 'Home',           url: 'index.html',           body: 'QuestNerd home 3D prints apps games' },
-    { id: 'page:shop',       title: 'Shop',           url: 'shop.html',            body: 'Shop all products catalog' },
-    { id: 'page:models',     title: '3D Models',      url: 'models.html',          body: 'Digital STL OBJ 3D printable models Cults3D Etsy' },
-    { id: 'page:apps',       title: 'Apps & Games',   url: 'apps.html',            body: 'Android apps games Google Play' },
-    { id: 'page:downloads',  title: 'PC Downloads',   url: 'downloads.html',       body: 'PC downloads free paid Stripe tools software' },
-    { id: 'page:portfolio',  title: 'Portfolio',      url: 'portfolio.html',       body: 'Portfolio case studies projects' },
-    { id: 'page:about',      title: 'About',          url: 'about.html',           body: 'About QuestNerd creator workshop' },
-    { id: 'page:contact',    title: 'Contact',        url: 'contact.html',         body: 'Contact email QuestNerd' },
+    { id: 'page:home',       title: 'Home',           url: '/',                   body: 'QuestNerd home 3D prints apps games' },
+    { id: 'page:shop',       title: 'Shop',           url: '/shop/',              body: 'Shop all products catalog' },
+    { id: 'page:models',     title: '3D Models',      url: '/models/',            body: 'Digital STL OBJ 3D printable models Cults3D Etsy' },
+    { id: 'page:apps',       title: 'Apps & Games',   url: '/apps/',              body: 'Android apps games Google Play' },
+    { id: 'page:downloads',  title: 'PC Downloads',   url: '/downloads/',         body: 'PC downloads free paid Stripe tools software' },
+    { id: 'page:portfolio',  title: 'Portfolio',      url: '/portfolio/',         body: 'Portfolio case studies projects' },
+    { id: 'page:about',      title: 'About',          url: '/about/',             body: 'About QuestNerd creator workshop' },
+    { id: 'page:contact',    title: 'Contact',        url: '/contact/',           body: 'Contact email QuestNerd' },
   ];
 
   function loadLunr() {
@@ -40,7 +40,7 @@
       docs.push({
         id: 'product:' + p.id,
         title: p.title || '',
-        url: 'product.html?id=' + encodeURIComponent(p.id || ''),
+        url: '/product/' + encodeURIComponent(p.id || '') + '/',
         kind: 'Product',
         body: [p.description, p.longDescription, p.story, (p.tags || []).join(' ')].filter(Boolean).join(' ')
       });
@@ -49,7 +49,7 @@
       docs.push({
         id: 'project:' + p.id,
         title: p.title || '',
-        url: 'project.html?id=' + encodeURIComponent(p.id || ''),
+        url: '/project/' + encodeURIComponent(p.id || '') + '/',
         kind: 'Project',
         body: [p.summary, p.story, p.outcome, (p.tech || []).join(' '), (p.tags || []).join(' ')].filter(Boolean).join(' ')
       });
