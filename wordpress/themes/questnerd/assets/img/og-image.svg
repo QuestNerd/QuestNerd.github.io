@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="qnBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#04080a"/>
+      <stop offset="100%" stop-color="#0b1410"/>
+    </linearGradient>
+    <linearGradient id="qnGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3ee07a"/>
+      <stop offset="100%" stop-color="#138a3d"/>
+    </linearGradient>
+    <radialGradient id="qnGlow" cx="20%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="rgba(62,224,122,0.35)"/>
+      <stop offset="100%" stop-color="rgba(62,224,122,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#qnBg)"/>
+  <rect width="1200" height="630" fill="url(#qnGlow)"/>
+
+  <g transform="translate(110,150)">
+    <rect x="0" y="0" width="240" height="240" rx="48" fill="#0b140c" stroke="url(#qnGreen)" stroke-width="6"/>
+    <path d="M58 130c0-34 28-62 62-62s62 28 62 62-28 62-62 62c-12 0-22-3-32-9l-24 18 12-28c-12-12-18-28-18-43z"
+          fill="none" stroke="url(#qnGreen)" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M120 108l24 24-24 24-24-24z" fill="url(#qnGreen)"/>
+  </g>
+
+  <g fill="#e7f3e7" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">
+    <text x="410" y="270" font-size="90" font-weight="800" letter-spacing="2">QUEST<tspan fill="url(#qnGreen)">NERD</tspan></text>
+    <text x="412" y="330" font-size="32" font-weight="500" letter-spacing="8" fill="#9dc09d">PRINT · BUILD · PLAY</text>
+    <text x="412" y="430" font-size="34" font-weight="500" fill="#cfe6d3">3D prints, apps, games &amp; the maker portfolio</text>
+    <text x="412" y="478" font-size="34" font-weight="500" fill="#cfe6d3">behind them — shipped by one engineer.</text>
+  </g>
+
+  <g transform="translate(110,520)" fill="none" stroke="#3ee07a" stroke-width="3">
+    <rect x="0" y="0" width="180" height="50" rx="25"/>
+    <text x="90" y="33" fill="#3ee07a" font-family="Inter, sans-serif" font-size="22" font-weight="700" text-anchor="middle" stroke="none">Shop</text>
+  </g>
+  <g transform="translate(310,520)" fill="none" stroke="#3ee07a" stroke-width="3">
+    <rect x="0" y="0" width="240" height="50" rx="25"/>
+    <text x="120" y="33" fill="#3ee07a" font-family="Inter, sans-serif" font-size="22" font-weight="700" text-anchor="middle" stroke="none">Portfolio</text>
+  </g>
+</svg>
