@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Games — QuestNerd</title>
-  <meta name="description" content="QuestNerd games and experiments on Google Play and beyond.">
+  <meta name="description" content="QuestNerd games, prototypes, and Skelepet development notes.">
   <meta property="og:title" content="Games — QuestNerd">
-  <meta property="og:description" content="QuestNerd games and experiments on Google Play and beyond.">
+  <meta property="og:description" content="QuestNerd games, prototypes, and Skelepet development notes.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/img/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
@@ -31,29 +31,29 @@
     <section class="section">
       <div class="section-head">
         <h1>Games</h1>
-        <p class="meta">Games, prototypes, and playable experiments built under QuestNerd.</p>
+        <p class="meta">Cozy experiments, weird little prototypes, Android builds, and playable ideas from QuestNerd.</p>
       </div>
 
       <div class="card" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center; justify-content:space-between;">
-        <p style="margin:0;">Featuring Skelepet, a cozy creature-care prototype, plus other QuestNerd game builds as they ship.</p>
-        <a class="qn-button" data-config-href="GOOGLE_PLAY_URL" href="#" target="_blank" rel="noopener noreferrer">Open QuestNerd game listings</a>
+        <p style="margin:0;">The current flagship concept is <strong>Skelepet</strong>: a black-and-white skeleton pet game built around tiny daily check-ins, minigames, and low-pressure progression.</p>
+        <a class="qn-button" href="#skelepet">Read the Skelepet dev note</a>
       </div>
 
-      <!--
-        NEW APP? Add an entry to assets/js/products.js with:
-          { id, type: 'googleplay', title, description, image, price, url }
-        `url` should be the full Play Store listing URL.
-      -->
       <div style="margin-top:2rem;" data-qn-grid data-qn-type="googleplay"
            data-qn-empty="No games yet. Add `type: 'googleplay'` items to assets/js/products.js."></div>
-    
 
-      <div class="card" style="margin-top:2rem;">
+      <div class="card" id="skelepet" style="margin-top:2rem;">
         <h2>Skelepet spotlight</h2>
-        <p class="meta">Skelepet is a cozy pet-care experiment where players collect bones, craft outfits, and keep a tiny undead buddy happy through short daily check-ins.</p>
-        <p>The design goal is "low-pressure progression": sessions are 2–5 minutes, with lightweight goals and no punitive streak systems.</p>
+        <p class="meta">A cozy skeleton-pet Android prototype with a tiny undead buddy, short care loops, and a deliberately simple black-and-white style.</p>
+        <p>Skelepet is planned as a Tamagotchi-style game where the character starts in an egg and grows through food, sleep, play, wellness checks, unlockable backgrounds, and Skelecoins.</p>
+        <p>The scope is intentionally focused: lightweight screens, readable icons, short sessions, and minigames like tic-tac-toe, hangman, and a slot machine. The goal is fun daily interaction without aggressive streak pressure.</p>
+        <div class="trust-row">
+          <span class="badge">Android / Kotlin</span>
+          <span class="badge">Retro black &amp; white</span>
+          <span class="badge">Tiny daily loops</span>
+          <span class="badge">Prototype in progress</span>
+        </div>
       </div>
-
     </section>
   </main>
 

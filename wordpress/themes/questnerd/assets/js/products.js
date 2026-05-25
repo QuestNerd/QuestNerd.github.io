@@ -1,196 +1,208 @@
 /*
  * QuestNerd — single source of truth for every product/listing on the site.
  *
- * Each entry has a `type` that controls where it shows up and how the
- * "Buy / View" button behaves:
- *
- *   type: 'cults3d'      → 3D model on Cults3D (digital download). Shown on
- *                          models.html and shop.html. `url` is the listing URL.
- *   type: 'etsy'         → physical 3D print sold on Etsy. Shown on
- *                          models.html and shop.html. `url` is the listing URL.
- *   type: 'googleplay'   → Android app on Google Play. Shown on apps.html and
- *                          shop.html. `url` is the Play Store listing URL.
- *   type: 'pc-download'  → free or hosted PC download. Shown on downloads.html.
- *                          `url` is a direct link to the file or external host.
- *   type: 'stripe'       → paid PC download sold via Stripe Checkout. Shown on
- *                          downloads.html (and shop.html). Provide
- *                          `stripePriceId` (e.g. "price_XXXXXXXX") OR a full
- *                          `stripeLink` (Stripe Payment Link URL).
- *
- * Full schema (all optional unless noted):
- *
- *   id              (required) URL-safe slug, used in `product.html?id=…`
- *   type            (required) one of the values above
- *   title           (required) human-readable name
- *   description     short blurb shown on cards (1–2 sentences)
- *   longDescription full HTML/markdown-ish blurb for the detail page
- *   story           "behind the scenes" narrative for the detail page
- *   specs           array of { label, value } pairs (dimensions, file size…)
- *   image           main thumbnail (used on cards + detail hero)
- *   images          array of additional image URLs (gallery on detail page)
- *   price           display price string ("$8.00", "Free")
- *   featured        bool — also surface on the home page
- *   url             outbound link for non-Stripe types
- *   stripePriceId / stripeLink — for `type: 'stripe'`
- *   model           path to a `.glb` / `.gltf` file — enables an interactive
- *                   3D preview on the detail page (and a "3D" badge on cards)
- *   files           array of { name, url, size } — downloadable files shown
- *                   on the detail page for pc-download / stripe items
- *   faq             array of { q, a } — surfaced as a JSON-LD FAQ block and
- *                   rendered visually on the detail page
- *   tags            free-form tags (used by search + related-items)
- *
- * To add a new item, copy one of the entries below and edit the fields.
- * Only this file needs to change — every page renders from it. Or use the
- * browser admin UI at /admin/ (Decap CMS) to add items via a form; new entries
- * are written to /content/products/*.json and loaded automatically.
+ * These are public-facing cards only. Checkout/download links can stay disabled
+ * until the live packages and storefront listings are ready.
  */
 
 window.QN_PRODUCTS = [
   // -------- 3D Models — Cults3D (digital downloads) --------
   {
-    id: 'dragon-mini',
+    id: 'magnetic-tile-storage-organizer-mini',
     type: 'cults3d',
-    title: 'QuestNerd Cults3D Model Collection',
-    description: 'Canonical link to QuestNerd\'s Cults3D uploads: minis, props, and print-ready experiments.',
+    title: 'Magnetic Tile Storage Organizer with Accessory Bin — Mini Version',
+    description: 'A QuestNerd Cults3D model for turning loose magnetic tiles and accessories into a clean, kid-friendly storage-and-play setup.',
     longDescription:
-      'A finely-detailed tabletop dragon miniature designed for 28mm and 32mm scale gaming. ' +
-      'The STL ships pre-supported and split into print-friendly chunks, so a single resin ' +
-      'printer can turn out a battle-ready mini in a few hours.',
+      'This is the kind of practical toy-room print QuestNerd is built around: a useful object that also looks intentional enough to leave out. ' +
+      'The organizer is designed for magnetic tile play sets, with a mini footprint, accessory storage, and a layout that keeps the pieces easy to grab instead of buried in a bin.',
     story:
-      'I designed this dragon after a frustrating session where every off-the-shelf mini was either ' +
-      'too small to read across the table or required nightmare supports. The pose was iterated 14 ' +
-      'times in Blender before it printed cleanly without sagging wings.',
+      'The design started from a real-world problem: magnetic tiles are fun until the cleanup turns into a pile of mixed pieces, accessories, and half-built ideas. ' +
+      'The goal was to make storage feel like part of the toy rather than a punishment after playtime.',
     specs: [
-      { label: 'Scale', value: '28mm / 32mm' },
-      { label: 'Files', value: 'STL (pre-supported) + raw OBJ' },
-      { label: 'Print time', value: '~3h on resin (0.05mm)' },
+      { label: 'Category', value: 'Home / toy storage' },
+      { label: 'Use case', value: 'Magnetic tile organization and accessory sorting' },
+      { label: 'Storefront', value: 'Cults3D listing under QuestNerd' },
     ],
     image: 'assets/img/questnerd-mark.svg',
-    images: [],
-    model: 'assets/models/sample-cube.glb', // TODO replace with the real dragon .glb
     price: 'View on Cults3D',
-    url: 'https://cults3d.com/en/users/QuestNerd', // TODO replace with listing URL
+    url: 'https://cults3d.com/en/3d-model/home/magnetic-tile-storage-organizer-with-accessory-bin-mini-version-magnet-tile',
     featured: true,
-    tags: ['miniature', 'tabletop', 'rpg', 'dragon', 'resin'],
+    tags: ['cults3d', 'magnetic tiles', 'toy storage', 'organizer', 'kids', '3d-printing'],
     faq: [
-      { q: 'What scale is it?', a: '28mm / 32mm, suitable for D&D, Pathfinder, Frostgrave, and similar.' },
-      { q: 'Do I need supports?', a: 'No — the STL ships pre-supported for resin printers.' },
+      { q: 'Is this a physical product?', a: 'This listing points to the digital Cults3D model. Physical-print options can be handled separately through the shop or contact form.' },
+      { q: 'Why is it on the QuestNerd site too?', a: 'The site keeps the portfolio, shop cards, and external storefront links in one place so visitors can see the work without hunting across platforms.' },
     ],
   },
   {
-    id: 'mech-keychain',
+    id: 'viture-xr-light-blocker',
     type: 'cults3d',
-    title: 'New Releases Feed (Cults3D)',
-    description: 'Tracks latest model drops published under the QuestNerd name on Cults3D.',
-    image: 'assets/img/questnerd-mark.svg',
-    price: 'Browse releases',
-    url: 'https://cults3d.com/en/users/QuestNerd', // TODO replace with listing URL
-    featured: true,
-    tags: ['keychain', 'articulated', 'print-in-place', 'mech'],
-  },
-
-  // -------- Physical prints — Etsy --------
-  {
-    id: 'desk-organizer',
-    type: 'etsy',
-    title: 'Modular Desk Organizer',
-    description: 'Hand-printed modular desk organizer. Stackable, customizable, ships worldwide.',
-    image: 'assets/img/questnerd-mark.svg',
-    price: '$32.00',
-    url: 'https://www.etsy.com/shop/QuestNerd', // TODO replace with listing URL
-    featured: true,
-    tags: ['desk', 'organizer', 'modular', 'physical-print'],
-  },
-  {
-    id: 'planter-pot',
-    type: 'etsy',
-    title: 'Low-Poly Planter Pot',
-    description: 'Eye-catching low-poly planter pot, printed in matte PLA. Drainage tray included.',
-    image: 'assets/img/questnerd-mark.svg',
-    price: '$18.00',
-    url: 'https://www.etsy.com/shop/QuestNerd', // TODO replace with listing URL
-    featured: true,
-    tags: ['planter', 'low-poly', 'home-decor'],
-  },
-
-  // -------- Apps — Google Play --------
-  {
-    id: 'quest-runner',
-    type: 'googleplay',
-    title: 'Quest Runner',
-    description: 'A pixel-art roguelike built in Godot. Quick runs, deep builds, big bosses.',
-    image: 'assets/img/questnerd-mark.svg',
-    price: 'Coming soon',
-    url: 'https://play.google.com/store/apps/dev?id=QuestNerd', // TODO replace with app URL
-    tags: ['game', 'roguelike', 'godot', 'pixel-art'],
-  },
-  {
-    id: 'printpal',
-    type: 'googleplay',
-    title: 'PrintPal',
-    description: 'Companion app for managing 3D print queues across multiple printers.',
-    image: 'assets/img/questnerd-mark.svg',
-    price: 'Free',
-    url: 'https://play.google.com/store/apps/dev?id=QuestNerd', // TODO replace with app URL
-    tags: ['app', 'utility', '3d-printing'],
-  },
-  {
-    id: 'nerdnotes',
-    type: 'googleplay',
-    title: 'NerdNotes',
-    description: 'Minimalist note-taking PWA with end-to-end sync.',
-    image: 'assets/img/questnerd-mark.svg',
-    price: 'Free',
-    url: 'https://play.google.com/store/apps/dev?id=QuestNerd', // TODO replace with app URL
-    tags: ['app', 'notes', 'pwa'],
-  },
-
-  // -------- PC downloads (free) --------
-  {
-    id: 'slicer-presets',
-    type: 'pc-download',
-    title: 'QuestNerd Slicer Presets',
-    description: 'Curated Cura / PrusaSlicer profiles tuned for QuestNerd models.',
-    image: 'assets/img/questnerd-mark.svg',
-    price: 'Free',
-    url: '#', // intentionally disabled until package refresh is complete
-    files: [
-      // { name: 'QuestNerd-Cura.curaprofile', url: 'downloads/QuestNerd-Cura.curaprofile', size: '12 KB' },
-      // { name: 'QuestNerd-PrusaSlicer.ini',  url: 'downloads/QuestNerd-PrusaSlicer.ini',  size: '9 KB' },
-    ],
-    tags: ['slicer', 'presets', 'free'],
-  },
-
-  // -------- PC downloads (paid, via Stripe Checkout) --------
-  {
-    id: 'pro-tool',
-    type: 'stripe',
-    title: 'QuestNerd Queue Manager Pro',
-    description: 'Pro-grade utility for 3D print pipeline automation. One-time purchase.',
+    title: 'VITURE XR Glasses Light Blocker / Nose-Piece Fit Project',
+    description: 'A practical QuestNerd wearable-accessory model focused on blocking more light and improving the fit around XR glasses.',
     longDescription:
-      'QuestNerd Pro Tool watches your slicer output folder, validates every G-code file ' +
-      'against your printer\'s firmware, and pushes successful builds into a queue ready ' +
-      'for OctoPrint or Klipper. Windows, macOS, and Linux builds included.',
+      'A small utility print can make expensive hardware feel dramatically better. This model project focuses on improving the light-blocking and nose-area fit around VITURE-style XR glasses without making the accessory bulky or flashy.',
+    story:
+      'The design challenge was not just “make a cover.” It had to block more light, respect the glasses geometry, avoid interfering with the wearable, and still be printable without turning into a fragile support nightmare.',
+    specs: [
+      { label: 'Category', value: 'Wearable accessory / XR comfort' },
+      { label: 'Design focus', value: 'Light blocking, nose fit, printability' },
+      { label: 'Status', value: 'QuestNerd model project / storefront profile item' },
+    ],
     image: 'assets/img/questnerd-mark.svg',
-    price: '$19.00',
-    // Provide ONE of the following:
-    //   stripePriceId: 'price_XXXXXXXX'  // from Stripe dashboard → Products → Prices
-    //   stripeLink:    'https://buy.stripe.com/XXXXXXXX' // a Stripe Payment Link
-    stripePriceId: '', // intentionally blank while checkout is disabled
-    // stripeLink: 'https://buy.stripe.com/REPLACE_ME', // optional alternative
-    files: [
-      // After purchase, files are delivered by Stripe receipt. List "what you
-      // get" here so buyers see the contents up front:
-      // { name: 'QuestNerd-Pro-Tool-1.0-win.zip',   size: '24 MB' },
-      // { name: 'QuestNerd-Pro-Tool-1.0-mac.dmg',   size: '28 MB' },
-      // { name: 'QuestNerd-Pro-Tool-1.0-linux.tar.gz', size: '22 MB' },
+    price: 'View QuestNerd on Cults3D',
+    url: 'https://cults3d.com/en/users/QuestNerd',
+    featured: true,
+    tags: ['cults3d', 'viture', 'xr glasses', 'accessory', 'light blocker', '3d-printing'],
+  },
+  {
+    id: 'questnerd-cults3d-profile',
+    type: 'cults3d',
+    title: 'QuestNerd Cults3D Model Profile',
+    description: 'The central Cults3D profile for QuestNerd model drops, functional prints, accessories, and experiment releases.',
+    longDescription:
+      'Some models deserve their own product card, and some are better browsed directly from the storefront. This profile card keeps the QuestNerd Cults3D presence visible from the main shop, model page, and home-page feature grid.',
+    story:
+      'The point of the profile card is simple: when a model listing changes, the site still gives visitors one reliable place to jump into the current QuestNerd storefront.',
+    specs: [
+      { label: 'Storefront', value: 'Cults3D' },
+      { label: 'Creator name', value: 'QuestNerd' },
+      { label: 'Content type', value: 'Digital 3D-printable models' },
     ],
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Browse profile',
+    url: 'https://cults3d.com/en/users/QuestNerd',
+    featured: false,
+    tags: ['cults3d', 'questnerd', 'stl', '3d models', 'digital downloads'],
+  },
+  {
+    id: 'makerworld-print-request',
+    type: 'etsy',
+    title: 'Custom 3D Print Request / MakerWorld Quote Flow',
+    description: 'A quote flow for people who find a MakerWorld model and want QuestNerd to print it cleanly instead of guessing settings themselves.',
+    longDescription:
+      'This is not a generic “send me a file” form. The quote flow is built around the actual print variables that matter: model URL, filament, material, quality tier, size, and checkout handoff.',
+    story:
+      'The idea came from a common customer problem: people can find models they love, but they do not always own a printer or know which filament/settings make sense. The flow turns that into a structured request instead of a messy message thread.',
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Quote flow',
+    url: 'makerworld-prints.html',
+    featured: true,
+    tags: ['3d printing service', 'makerworld', 'quote flow', 'custom print'],
+  },
+  {
+    id: 'skelepet',
+    type: 'googleplay',
+    title: 'Skelepet',
+    description: 'A black-and-white skeleton pet game prototype: tiny daily check-ins, needs, minigames, unlockables, and Skelecoins.',
+    longDescription:
+      'Skelepet is a Tamagotchi-style Android game built around a skeleton-head character that starts in an egg, grows through care loops, and stays intentionally lightweight. ' +
+      'The design uses low-framerate black-and-white charm, small daily actions, wellness stats, minigames, unlockable backgrounds, and a playful currency called Skelecoins.',
+    story:
+      'The goal is cozy instead of demanding: a little companion game that rewards consistency without punishing people for having a real life. The feature plan includes food, sleep, play, stats, settings, extras, tic-tac-toe, hangman, and a slot-machine minigame.',
+    specs: [
+      { label: 'Platform', value: 'Android prototype' },
+      { label: 'Stack', value: 'Kotlin / Android Studio' },
+      { label: 'Style', value: 'Black-and-white, 1 fps skeleton-pet charm' },
+    ],
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'In development',
+    url: 'games.html#skelepet',
+    featured: true,
+    tags: ['game', 'android', 'kotlin', 'tamagotchi', 'skeleton', 'skelepet'],
     faq: [
-      { q: 'Which platforms?', a: 'Windows 10+, macOS 12+, and Linux (x86_64).' },
-      { q: 'Does it support Klipper?', a: 'Yes — Klipper and OctoPrint are both supported out of the box.' },
-      { q: 'Is there a free trial?', a: 'Not yet — but the slicer presets above are free and demonstrate the core checks.' },
+      { q: 'Is Skelepet downloadable right now?', a: 'Not yet. This card is here as a public project preview while the game is in development.' },
+      { q: 'What makes it different?', a: 'The focus is low-pressure daily interaction, readable retro visuals, and small minigames rather than aggressive streak mechanics.' },
     ],
-    tags: ['software', 'tool', 'automation', '3d-printing', 'paid'],
+  },
+  {
+    id: 'questnerd-game-lab',
+    type: 'googleplay',
+    title: 'QuestNerd Game Lab',
+    description: 'A public home for small game prototypes, Android experiments, and mechanics that may become full releases.',
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Devlog',
+    url: 'games.html',
+    featured: false,
+    tags: ['games', 'prototype', 'android', 'devlog'],
+  },
+  {
+    id: 'bambu-filament-manager-companion',
+    type: 'pc-download',
+    title: 'Bambu Filament Manager Companion',
+    description: 'A planned desktop companion that watches print usage and helps keep spool remaining amounts in sync instead of relying on manual updates.',
+    longDescription:
+      'Bambu Studio can show filament usage for a sliced job, but a practical shop needs that number to feed inventory automatically. This tool preview captures the workflow: sync spool data, observe started/stopped prints, deduct completed usage, and handle canceled prints by layer progress when possible.',
+    story:
+      'The tool exists because filament inventory is one of those tiny chores that becomes a big operational drag when you print often. The goal is to make the spool count update itself from real print activity.',
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Preview only',
+    url: '#',
+    files: [],
+    featured: true,
+    tags: ['bambu studio', 'filament manager', 'inventory', 'desktop tool', '3d printing'],
+    faq: [
+      { q: 'Can I download it?', a: 'Not yet. Downloads are intentionally disabled while the package is being built and tested.' },
+      { q: 'What problem does it solve?', a: 'It turns slicer/print usage into spool inventory updates so remaining filament does not have to be guessed by hand.' },
+    ],
+  },
+  {
+    id: 'pwagent-director-hub',
+    type: 'pc-download',
+    title: 'PWAgent Director Hub',
+    description: 'A local multi-agent development dashboard concept for turning app ideas into planned, coded, tested, and reviewed builds.',
+    longDescription:
+      'Director Hub is a local orchestration layer for autonomous development workflows: intake, spec, implementation, debugging, two-pass verification, and final review. It is designed around visible logs, explicit status, and a “single truth” document set so the work does not disappear into a black box.',
+    story:
+      'The useful part is not “AI writes code.” The useful part is making the process inspectable: roles, decisions, risks, task lists, CI gates, and live run reports that make it clear what happened and why.',
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Preview only',
+    url: '#',
+    files: [],
+    featured: false,
+    tags: ['ai dev tools', 'automation', 'pwa', 'local llm', 'developer tools'],
+  },
+  {
+    id: 'ipfire-rules-audit-kit',
+    type: 'pc-download',
+    title: 'Firewall Rule Audit Kit',
+    description: 'A practical checklist-style helper for reviewing rule order, source/destination scope, ports, and proof-of-connectivity before changing firewall configs.',
+    longDescription:
+      'Firewall work fails when assumptions are not checked. This kit is planned as a plain-language audit workflow: confirm connectivity first, identify rule order, verify source/destination direction, document ports, and capture what each rule is supposed to prove.',
+    story:
+      'It grew out of real troubleshooting where one wrong assumption about traffic direction can waste hours. The workflow forces the boring checks to happen first.',
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Preview only',
+    url: '#',
+    files: [],
+    featured: false,
+    tags: ['firewall', 'ipfire', 'networking', 'audit', 'checklist'],
+  },
+  {
+    id: 'access-vba-toolbelt',
+    type: 'pc-download',
+    title: 'Access/VBA Operations Toolbelt',
+    description: 'Small, practical Microsoft Access helpers for forms, printing, record updates, and production-floor workflows.',
+    longDescription:
+      'A collection of hard-won Access/VBA patterns: explicit record saves, printer selection persistence, subform refresh timing, record deletion commands, and tidy code that avoids ambiguous references.',
+    story:
+      'These helpers come from production-style database work where the form has to behave correctly for real users, not just work once on the developer machine.',
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Preview only',
+    url: '#',
+    files: [],
+    featured: false,
+    tags: ['microsoft access', 'vba', 'database', 'operations', 'printing'],
+  },
+  {
+    id: 'systems-rescue-playbook',
+    type: 'stripe',
+    title: 'Systems Rescue Playbook',
+    description: 'A future paid playbook for PC setup, remote-access fixes, network checks, backups, and practical troubleshooting workflows.',
+    longDescription:
+      'This is a placeholder for a polished, paid troubleshooting playbook. It is listed for portfolio visibility only; checkout is disabled until the product is real, reviewed, and ready.',
+    image: 'assets/img/questnerd-mark.svg',
+    price: 'Waitlist',
+    stripePriceId: '',
+    files: [],
+    tags: ['pc setup', 'troubleshooting', 'systems', 'playbook', 'premium'],
   },
 ];
