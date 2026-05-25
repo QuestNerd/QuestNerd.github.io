@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tools Lab — QuestNerd</title>
-  <meta name="description" content="QuestNerd PC software, tools, and downloadable resources. Free and paid via Stripe Checkout.">
+  <meta name="description" content="QuestNerd systems, desktop workflow, PC setup, troubleshooting, and automation tool previews.">
   <meta property="og:title" content="Tools Lab — QuestNerd">
-  <meta property="og:description" content="QuestNerd PC software, tools, and downloadable resources. Free and paid via Stripe Checkout.">
+  <meta property="og:description" content="QuestNerd systems, desktop workflow, PC setup, troubleshooting, and automation tool previews.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/img/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
@@ -31,28 +31,39 @@
     <section class="section">
       <div class="section-head">
         <h1>Tools Lab</h1>
-        <p class="meta">A utility bench for desktop workflows: print prep helpers, QA scripts, and automation utilities. Nothing is downloadable yet; this page is a roadmap and showcase.</p>
+        <p class="meta">The bench for QuestNerd systems work: practical PC setup, troubleshooting workflows, automation tools, print-shop helpers, and developer utilities.</p>
       </div>
 
-      <h2>Featured toolkits (coming soon)</h2>
-      <!--
-        NEW FREE DOWNLOAD? Add an entry to assets/js/products.js with:
-          { id, type: 'pc-download', title, description, image, price: 'Free', url }
-        `url` may be an external host or a path like 'downloads/yourfile.zip'.
-      -->
-      <div data-qn-grid data-qn-type="pc-download"
-           data-qn-empty="No free downloads yet. Add `type: 'pc-download'` items to assets/js/products.js."></div>
+      <div class="card">
+        <h2>What this section is</h2>
+        <p>Tools Lab is the public-safe version of the stuff I actually build to solve problems: helper scripts, setup playbooks, print workflow utilities, database patterns, and dashboards that make complicated work less mysterious.</p>
+        <p>It is intentionally not called a “PC helper” page. The goal is broader: show the kind of systems thinking behind QuestNerd without exposing private configs, customer details, or half-finished downloads.</p>
+        <div class="trust-row">
+          <span class="badge">PC setup</span>
+          <span class="badge">Workflow automation</span>
+          <span class="badge">3D print operations</span>
+          <span class="badge">Developer tooling</span>
+        </div>
+      </div>
 
-      <h2 style="margin-top:2rem;">Premium tools (waitlist)</h2>
-      <p class="meta">These tools are listed for portfolio review. Checkout and direct downloads are temporarily disabled.</p>
-      <!--
-        NEW PAID DOWNLOAD? Add an entry to assets/js/products.js with:
-          { id, type: 'stripe', title, description, image, price, stripePriceId: 'price_XXXX' }
-        OR use `stripeLink: 'https://buy.stripe.com/XXXX'` for a Stripe Payment Link.
-        See STRIPE_SETUP.md for instructions.
-      -->
+      <h2 style="margin-top:2rem;">Tool previews</h2>
+      <div data-qn-grid data-qn-type="pc-download"
+           data-qn-empty="No tool previews yet. Add `type: 'pc-download'` items to assets/js/products.js."></div>
+
+      <h2 style="margin-top:2rem;">Future paid resources</h2>
+      <p class="meta">Waitlist-only ideas. Checkout stays disabled until the product is packaged, tested, and supportable.</p>
       <div data-qn-grid data-qn-type="stripe"
-           data-qn-empty="No paid downloads yet. Add `type: 'stripe'` items to assets/js/products.js. See STRIPE_SETUP.md."></div>
+           data-qn-empty="No premium previews yet. Add `type: 'stripe'` items to assets/js/products.js."></div>
+
+      <div class="card" style="margin-top:2rem;">
+        <h2>Useful work I want this page to prove</h2>
+        <ul>
+          <li>Building repeatable troubleshooting flows instead of guessing.</li>
+          <li>Turning messy print-shop steps into structured tools.</li>
+          <li>Writing maintainable helper code for real operator workflows.</li>
+          <li>Packaging technical knowledge so non-technical users can follow it.</li>
+        </ul>
+      </div>
     </section>
   </main>
 
