@@ -51,8 +51,8 @@ window.QN_PRODUCTS = [
   {
     id: 'dragon-mini',
     type: 'cults3d',
-    title: 'Tabletop Dragon Miniature',
-    description: 'Highly detailed dragon miniature, pre-supported STL — perfect for tabletop RPGs.',
+    title: 'QuestNerd Cults3D Model Collection',
+    description: 'Canonical link to QuestNerd's Cults3D uploads: minis, props, and print-ready experiments.',
     longDescription:
       'A finely-detailed tabletop dragon miniature designed for 28mm and 32mm scale gaming. ' +
       'The STL ships pre-supported and split into print-friendly chunks, so a single resin ' +
@@ -69,7 +69,7 @@ window.QN_PRODUCTS = [
     image: 'assets/img/questnerd-mark.svg',
     images: [],
     model: 'assets/models/sample-cube.glb', // TODO replace with the real dragon .glb
-    price: '$8.00',
+    price: 'View on Cults3D',
     url: 'https://cults3d.com/en/users/QuestNerd', // TODO replace with listing URL
     featured: true,
     tags: ['miniature', 'tabletop', 'rpg', 'dragon', 'resin'],
@@ -81,10 +81,10 @@ window.QN_PRODUCTS = [
   {
     id: 'mech-keychain',
     type: 'cults3d',
-    title: 'Articulated Mech Keychain',
-    description: 'Print-in-place articulated mech keychain. No supports needed.',
+    title: 'New Releases Feed (Cults3D)',
+    description: 'Tracks latest model drops published under the QuestNerd name on Cults3D.',
     image: 'assets/img/questnerd-mark.svg',
-    price: '$4.00',
+    price: 'Browse releases',
     url: 'https://cults3d.com/en/users/QuestNerd', // TODO replace with listing URL
     featured: true,
     tags: ['keychain', 'articulated', 'print-in-place', 'mech'],
@@ -121,7 +121,7 @@ window.QN_PRODUCTS = [
     title: 'Quest Runner',
     description: 'A pixel-art roguelike built in Godot. Quick runs, deep builds, big bosses.',
     image: 'assets/img/questnerd-mark.svg',
-    price: 'Free',
+    price: 'Coming soon',
     url: 'https://play.google.com/store/apps/dev?id=QuestNerd', // TODO replace with app URL
     tags: ['game', 'roguelike', 'godot', 'pixel-art'],
   },
@@ -154,7 +154,7 @@ window.QN_PRODUCTS = [
     description: 'Curated Cura / PrusaSlicer profiles tuned for QuestNerd models.',
     image: 'assets/img/questnerd-mark.svg',
     price: 'Free',
-    url: '#', // TODO replace with file URL (or place a file in /downloads/ and link to it)
+    url: '#', // intentionally disabled until package refresh is complete
     files: [
       // { name: 'QuestNerd-Cura.curaprofile', url: 'downloads/QuestNerd-Cura.curaprofile', size: '12 KB' },
       // { name: 'QuestNerd-PrusaSlicer.ini',  url: 'downloads/QuestNerd-PrusaSlicer.ini',  size: '9 KB' },
@@ -166,7 +166,7 @@ window.QN_PRODUCTS = [
   {
     id: 'pro-tool',
     type: 'stripe',
-    title: 'QuestNerd Pro Tool',
+    title: 'QuestNerd Queue Manager Pro',
     description: 'Pro-grade utility for 3D print pipeline automation. One-time purchase.',
     longDescription:
       'QuestNerd Pro Tool watches your slicer output folder, validates every G-code file ' +
@@ -177,7 +177,7 @@ window.QN_PRODUCTS = [
     // Provide ONE of the following:
     //   stripePriceId: 'price_XXXXXXXX'  // from Stripe dashboard → Products → Prices
     //   stripeLink:    'https://buy.stripe.com/XXXXXXXX' // a Stripe Payment Link
-    stripePriceId: 'price_REPLACE_ME', // TODO replace with a real price ID
+    stripePriceId: '', // intentionally blank while checkout is disabled
     // stripeLink: 'https://buy.stripe.com/REPLACE_ME', // optional alternative
     files: [
       // After purchase, files are delivered by Stripe receipt. List "what you
