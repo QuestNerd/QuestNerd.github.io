@@ -52,7 +52,7 @@ window.QN_PRODUCTS = [
     id: 'dragon-mini',
     type: 'cults3d',
     title: 'QuestNerd Cults3D Model Collection',
-    description: 'Canonical link to QuestNerd's Cults3D uploads: minis, props, and print-ready experiments.',
+    description: 'Canonical link to QuestNerd\'s Cults3D uploads: minis, props, and print-ready experiments.',
     longDescription:
       'A finely-detailed tabletop dragon miniature designed for 28mm and 32mm scale gaming. ' +
       'The STL ships pre-supported and split into print-friendly chunks, so a single resin ' +
