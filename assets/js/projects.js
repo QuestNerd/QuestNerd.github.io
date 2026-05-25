@@ -46,7 +46,10 @@ window.QN_PROJECTS = [
     duration: '6 weeks',
     tech: ['Python', 'PrusaSlicer CLI', 'Klipper', 'OctoPrint', 'SQLite', 'Webhooks'],
     outcome: 'Cut order-to-ship time from 4 days to 36 hours.',
-    links: [],
+    links: [
+      { label: 'Workflow write-up', url: 'landing/print-pipeline.html' },
+      { label: 'MakerWorld setup notes', url: 'MAKERWORLD_SETUP.md' },
+    ],
     tags: ['3d-printing', 'automation', 'pipeline', 'devops'],
   },
   {
@@ -68,7 +71,9 @@ window.QN_PROJECTS = [
     duration: '90 days',
     tech: ['Godot 4', 'GDScript', 'Aseprite', 'FMOD'],
     outcome: 'Shipped on time; 1.4k installs in the first 30 days.',
-    links: [],
+    links: [
+      { label: 'Games page', url: 'games.html' },
+    ],
     tags: ['gamedev', 'godot', 'roguelike', 'launch'],
   },
   {
@@ -78,16 +83,19 @@ window.QN_PROJECTS = [
     role: 'Solo engineer',
     summary: 'Why the QuestNerd site moved off PHP entirely, and how the green/black theme survived the port.',
     story:
-      '<p>The WordPress install was costing money, time, and a security incident roughly every six ' +
-      'months. I ported the entire theme to plain HTML/CSS/JS, kept the look-and-feel pixel-close ' +
-      'to the original, wired Stripe Checkout in client-only mode, and moved hosting to GitHub Pages ' +
-      'on a custom domain. Total ongoing cost: $0/month.</p>',
+      '<p>This repo now carries both a static build and a WordPress theme/plugin mirror so features can be developed once and migrated safely. ' +
+      'Core storefront flows, theme assets, and content loaders were normalized across both stacks.</p>' +
+      '<p>Proof is in the migration docs and mirrored theme files committed in this codebase.</p>',
     image: 'assets/img/questnerd-mark.svg',
     moneySpent: '$0',
     moneySaved: '~$240/yr in hosting + plugin fees',
     duration: '2 weekends',
     tech: ['HTML', 'CSS', 'Vanilla JS', 'Stripe Checkout', 'GitHub Pages'],
-    outcome: 'Faster site, no security patching, free hosting.',
+    outcome: 'Static + WordPress parity established with documented migration path.',
+    links: [
+      { label: 'WordPress migration plan', url: 'WORDPRESS_MIGRATION.md' },
+      { label: 'Theme mirror (wordpress/themes/questnerd)', url: 'wordpress/themes/questnerd/' },
+    ],
     tags: ['web', 'static', 'wordpress', 'migration'],
   },
   {
