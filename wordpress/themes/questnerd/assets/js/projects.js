@@ -47,8 +47,8 @@ window.QN_PROJECTS = [
     tech: ['Python', 'PrusaSlicer CLI', 'Klipper', 'OctoPrint', 'SQLite', 'Webhooks'],
     outcome: 'Cut order-to-ship time from 4 days to 36 hours.',
     links: [
-      { label: 'Workflow write-up', url: 'landing/print-pipeline.html' },
-      { label: 'MakerWorld setup notes', url: 'MAKERWORLD_SETUP.md' },
+      { label: 'Workflow write-up', url: '/landing/print-pipeline.html' },
+      { label: 'MakerWorld setup notes', url: '/MAKERWORLD_SETUP.md' },
     ],
     tags: ['3d-printing', 'automation', 'pipeline', 'devops'],
   },
@@ -72,7 +72,7 @@ window.QN_PROJECTS = [
     tech: ['Godot 4', 'GDScript', 'Aseprite', 'FMOD'],
     outcome: 'Shipped on time; 1.4k installs in the first 30 days.',
     links: [
-      { label: 'Games page', url: 'games.html' },
+      { label: 'Games page', url: '/games.html' },
     ],
     tags: ['gamedev', 'godot', 'roguelike', 'launch'],
   },
@@ -93,8 +93,8 @@ window.QN_PROJECTS = [
     tech: ['HTML', 'CSS', 'Vanilla JS', 'Stripe Checkout', 'GitHub Pages'],
     outcome: 'Static + WordPress parity established with documented migration path.',
     links: [
-      { label: 'WordPress migration plan', url: 'WORDPRESS_MIGRATION.md' },
-      { label: 'Theme mirror (wordpress/themes/questnerd)', url: 'wordpress/themes/questnerd/' },
+      { label: 'WordPress migration plan', url: '/WORDPRESS_MIGRATION.md' },
+      { label: 'Theme mirror (wordpress/themes/questnerd)', url: '/wordpress/themes/questnerd/' },
     ],
     tags: ['web', 'static', 'wordpress', 'migration'],
   },
