@@ -18,9 +18,9 @@
   var STORE_LABELS = {
     'cults3d': 'View on Cults3D',
     'etsy': 'View on Etsy',
-    'googleplay': 'Get it on Google Play',
-    'pc-download': 'Download',
-    'stripe': 'Buy now',
+    'googleplay': 'View project',
+    'pc-download': 'Preview',
+    'stripe': 'View waitlist',
   };
 
   function escapeHtml(s) {
@@ -55,12 +55,16 @@
 
     var actionHtml;
     if (product.type === 'stripe') {
-      actionHtml =
-        '<button type="button" class="qn-button qn-buy" data-qn-buy="' + escapeHtml(product.id) + '">' +
-        escapeHtml(typeLabel) +
-        '</button>';
+      if (product.stripePriceId || product.stripeLink) {
+        actionHtml =
+          '<button type="button" class="qn-button qn-buy" data-qn-buy="' + escapeHtml(product.id) + '">' +
+          'Buy now' +
+          '</button>';
+      } else {
+        actionHtml = '<a class="qn-button ghost" href="' + detailHref + '">View waitlist</a>';
+      }
     } else {
-      var href = product.url && product.url !== '#' ? product.url : '#';
+      var href = product.url && product.url !== '#' ? product.url : detailHref;
       var rel = /^https?:\/\//.test(href) ? ' target="_blank" rel="noopener noreferrer"' : '';
       actionHtml =
         '<a class="qn-button ghost" href="' + escapeHtml(href) + '"' + rel + '>' +
@@ -135,7 +139,6 @@
       var pg = projectGrids[k];
       var limit = parseInt(pg.getAttribute('data-qn-limit') || '0', 10) || 0;
       var projects = (window.QN_PROJECTS || []).slice();
-      // Sort by date descending.
       projects.sort(function (a, b) {
         return String(b.date || '').localeCompare(String(a.date || ''));
       });
@@ -185,8 +188,6 @@
   } else {
     init();
   }
-  // Re-run if header/footer get injected after our initial pass.
   document.addEventListener('qn:partials-loaded', init);
-  // Re-run if Decap-authored content was merged in after first render.
   document.addEventListener('qn:content-loaded', init);
 })();
